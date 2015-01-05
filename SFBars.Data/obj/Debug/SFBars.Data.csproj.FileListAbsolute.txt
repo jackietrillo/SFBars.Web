@@ -1,0 +1,12 @@
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\SFBars.Data.dll.config
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\SFBars.Data.dll
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\SFBars.Data.pdb
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\EntityFramework.dll
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\SFBars.Core.dll
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\SFBars.Core.pdb
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\EntityFramework.xml
+C:\sites\SFBars.Web\SFBars.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\sites\SFBars.Web\SFBars.Data\obj\Debug\SFBars.Data.csprojResolveAssemblyReference.cache
+C:\sites\SFBars.Web\SFBars.Data\obj\Debug\SFBars.Data.dll
+C:\sites\SFBars.Web\SFBars.Data\obj\Debug\SFBars.Data.pdb

@@ -1,0 +1,7 @@
+C:\sites\SFBars\SFBars.Entities\bin\Debug\SFBars.Entities.dll
+C:\sites\SFBars\SFBars.Entities\bin\Debug\SFBars.Entities.pdb
+C:\sites\SFBars\SFBars.Entities\bin\Debug\EntityFramework.dll
+C:\sites\SFBars\SFBars.Entities\bin\Debug\EntityFramework.xml
+C:\sites\SFBars\SFBars.Entities\obj\Debug\SFBars.Entities.dll
+C:\sites\SFBars\SFBars.Entities\obj\Debug\SFBars.Entities.pdb
+C:\sites\SFBars\SFBars.Entities\obj\Debug\SFBars.Entities.csprojResolveAssemblyReference.cache

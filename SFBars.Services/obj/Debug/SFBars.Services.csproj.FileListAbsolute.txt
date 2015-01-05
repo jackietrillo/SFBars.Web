@@ -1,0 +1,11 @@
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Services.dll
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Services.pdb
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Core.dll
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Data.dll
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\EntityFramework.dll
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Core.pdb
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\SFBars.Data.pdb
+C:\sites\SFBars.Web\SFBars.Services\bin\Debug\EntityFramework.xml
+C:\sites\SFBars.Web\SFBars.Services\obj\Debug\SFBars.Services.csprojResolveAssemblyReference.cache
+C:\sites\SFBars.Web\SFBars.Services\obj\Debug\SFBars.Services.dll
+C:\sites\SFBars.Web\SFBars.Services\obj\Debug\SFBars.Services.pdb

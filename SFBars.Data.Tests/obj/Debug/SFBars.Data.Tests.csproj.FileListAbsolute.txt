@@ -1,0 +1,4 @@
+C:\sites\SFBars.Web\SFBars.Data.Tests\bin\Debug\SFBars.Data.Tests.dll
+C:\sites\SFBars.Web\SFBars.Data.Tests\bin\Debug\SFBars.Data.Tests.pdb
+C:\sites\SFBars.Web\SFBars.Data.Tests\obj\Debug\SFBars.Data.Tests.dll
+C:\sites\SFBars.Web\SFBars.Data.Tests\obj\Debug\SFBars.Data.Tests.pdb
