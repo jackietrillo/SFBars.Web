@@ -44,12 +44,14 @@ namespace SFBars.Api.Controllers
 					var sfBarModel = new SFBarModel
 					{
 						SFBarId = bar.SFBarId,
+						SFStreetId = bar.SFStreetId,
 						Name = bar.Name,
 						Descrip = bar.Descrip,
 						Latitude = bar.Latitude,
 						Longitude = bar.Longitude,
 						ImageUrl = bar.ImageUrl,
 						Address = bar.Address,
+						Hours = bar.Hours,
 						Phone = bar.Phone,
 						WebsiteUrl = bar.WebsiteUrl,
 						FacebookUrl = bar.FacebookUrl,
