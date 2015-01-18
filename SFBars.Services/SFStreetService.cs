@@ -19,7 +19,7 @@ namespace SFBars.Services
 
 		public IEnumerable<SFStreet> GetAll()
 		{
-			return _repository.Table.AsEnumerable<SFStreet>();			
+			return _repository.Table.AsEnumerable<SFStreet>().OrderBy(s => s.Name);			
 		}
 
 		public SFStreet GetById(int sfStreetId)

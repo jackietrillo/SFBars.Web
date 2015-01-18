@@ -10,6 +10,8 @@ namespace SFBars.Services
 	public interface ISFBarService
 	{
 		IEnumerable<SFBar> GetAll();
+		IEnumerable<SFBar> GetByStreetId(int sfStreetId);
 		SFBar GetById(int sfBarId);
+		
 	}
 }

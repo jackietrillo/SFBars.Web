@@ -19,14 +19,17 @@ namespace SFBars.Services
 
 		public IEnumerable<SFBar> GetAll()
 		{
-			return _repository.Table.AsEnumerable<SFBar>();
+			return _repository.Table.AsEnumerable<SFBar>().OrderBy( b => b.Name);
 		}
 
 		public SFBar GetById(int sfBarId)
 		{
-			return _repository.Table.FirstOrDefault(b => b.SFBarId== sfBarId);
-			
+			return _repository.Table.FirstOrDefault(b => b.SFBarId== sfBarId);			
 		}
 
+		public IEnumerable<SFBar> GetByStreetId(int sfStreetId)
+		{			
+			return _repository.Table.Where(b => b.SFStreetId == sfStreetId).OrderBy( b => b.Name);
+		}
 	}
 }

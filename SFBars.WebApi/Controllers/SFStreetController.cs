@@ -12,18 +12,18 @@ namespace SFBars.Api.Controllers
 {
     public class SFStreetController : ApiController
     {
-		private readonly ISFStreetService _SfStreetService;
-		private readonly ISFBarService _SfBarService;
+		private readonly ISFStreetService _sfStreetService;
+		private readonly ISFBarService _sfBarService;
 
 		public SFStreetController(ISFStreetService sfStreetService, ISFBarService sfBarService)
 		{
-			_SfStreetService = sfStreetService;
-			_SfBarService = sfBarService;
+			_sfStreetService = sfStreetService;
+			_sfBarService = sfBarService;
 		}
 		
 		public IEnumerable<SFStreetModel> Get()
 		{
-			IEnumerable<SFStreet> sfStreets = _SfStreetService.GetAll();
+			IEnumerable<SFStreet> sfStreets = _sfStreetService.GetAll();
 
 			List<SFStreetModel> sfStreetModels = new List<SFStreetModel>();
 
@@ -39,7 +39,9 @@ namespace SFBars.Api.Controllers
 
 				sfStreetModel.SFBars = new List<SFBarModel>();
 
-				foreach (var bar in s.SFBars)
+				IEnumerable<SFBar> sfBars = _sfBarService.GetByStreetId(s.SFStreetId);
+
+				foreach (var bar in sfBars)
 				{
 					var sfBarModel = new SFBarModel
 					{
@@ -69,7 +71,7 @@ namespace SFBars.Api.Controllers
 
 		public SFStreetModel Get(int id)
 		{
-			SFStreet entity = _SfStreetService.GetById(id);		
+			SFStreet entity = _sfStreetService.GetById(id);		
 
 			SFStreetModel model = new SFStreetModel {
 				SFStreetId = entity.SFStreetId,
