@@ -7,9 +7,9 @@ using SFBars.Core.Domain;
 
 namespace SFBars.Services
 {
-	public interface ISFStreetService
+	public interface IStreetService
 	{
-		IEnumerable<SFStreet> GetAll();
-		SFStreet GetById(int sfStreetId);
+		IEnumerable<Street> GetAll();
+		Street GetById(int streetId);
 	}
 }

@@ -7,11 +7,11 @@ using SFBars.Core.Domain;
 
 namespace SFBars.Services
 {
-	public interface ISFBarService
+	public interface IBarService
 	{
-		IEnumerable<SFBar> GetAll();
-		IEnumerable<SFBar> GetByStreetId(int sfStreetId);
-		SFBar GetById(int sfBarId);
+		IEnumerable<Bar> GetAll();
+		IEnumerable<Bar> GetByStreetId(int streetId);
+		Bar GetById(int barId);
 		
 	}
 }

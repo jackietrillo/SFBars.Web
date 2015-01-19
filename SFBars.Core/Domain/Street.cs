@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace SFBars.Core.Domain
 {
-	public class SFStreet : BaseEntity
+	public class Street : BaseEntity
 	{
-		private ICollection<SFBar> _sfBars;
+		public Street()
+		{
+			Bars = new List<Bar>();
+		}
 
-		public int SFStreetId { get; set; }
+		public int StreetId { get; set; }
 		public string Name { get; set; }
 		public string Descrip { get; set; }
 		public decimal Latitude { get; set; }
 		public decimal Longitude { get; set; }
 		public string ImageUrl { get; set; }
+				
+		public virtual ICollection<Bar> Bars  { get; set; }
 		
-		/// <summary>
-		/// Gets or sets sf bars collection
-		/// </summary>
-		public virtual ICollection<SFBar> SFBars
-		{
-			get { return _sfBars ?? (_sfBars = new List<SFBar>()); }
-			protected set { _sfBars = value; }
-		}
 	}
 }
