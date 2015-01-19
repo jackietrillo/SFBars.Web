@@ -44,8 +44,11 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Domain\SFBar.cs" />
-    <Compile Include="Domain\SFStreet.cs" />
+    <Compile Include="Domain\Bar.cs" />
+    <Compile Include="Domain\BarType.cs" />
+    <Compile Include="Domain\BarTypeBar.cs" />
+    <Compile Include="Domain\District.cs" />
+    <Compile Include="Domain\Street.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

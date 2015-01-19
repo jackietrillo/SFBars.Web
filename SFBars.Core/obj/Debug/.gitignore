@@ -1,1 +1,3 @@
 *.cache
+*.Core.pdb
+*.Core.dll

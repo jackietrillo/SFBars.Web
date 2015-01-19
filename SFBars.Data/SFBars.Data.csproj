@@ -50,8 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISFBarsDbContext.cs" />
-    <Compile Include="Mappings\SFBarMap.cs" />
-    <Compile Include="Mappings\SFStreetMap.cs" />
+    <Compile Include="Mappings\BarMap.cs" />
+    <Compile Include="Mappings\BarTypeBarMap.cs" />
+    <Compile Include="Mappings\BarTypeMap.cs" />
+    <Compile Include="Mappings\DistrictMap.cs" />
+    <Compile Include="Mappings\StreetMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SFBarsDbContext.cs" />

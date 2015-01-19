@@ -35,8 +35,8 @@ namespace SFBars.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-			For<IRepository<SFStreet>>().Use<Repository<SFStreet>>();
-			For<IRepository<SFBar>>().Use<Repository<SFBar>>();
+			For<IRepository<Street>>().Use<Repository<Street>>();
+			For<IRepository<Bar>>().Use<Repository<Bar>>();
         }
 
         #endregion

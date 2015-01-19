@@ -17,8 +17,8 @@ namespace SFBars.Data
 		{
 		}
 
-		public virtual DbSet<SFStreet> SFStreets { get; set; }
-		public virtual DbSet<SFBar> SFBars { get; set; }
+		public virtual DbSet<Street> SFStreets { get; set; }
+		public virtual DbSet<Bar> SFBars { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

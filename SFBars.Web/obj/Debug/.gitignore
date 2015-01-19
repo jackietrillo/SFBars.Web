@@ -1,2 +1,5 @@
 *.cache
 *.force
+*.dll
+*.pdb
+*.Web.csproj.App.config

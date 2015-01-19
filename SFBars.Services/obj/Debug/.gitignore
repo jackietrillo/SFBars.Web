@@ -1,2 +1,4 @@
 *.cache
 *.force
+*.dll
+*.pdb
