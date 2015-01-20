@@ -7,6 +7,7 @@ using System.Web.Http;
 using SFBars.Services;
 using SFBars.Api.Models;
 using SFBars.Core.Domain;
+using AutoMapper;
 
 namespace SFBars.Api.Controllers
 {
@@ -19,47 +20,28 @@ namespace SFBars.Api.Controllers
 		{
 			_streetService = streetService;
 			_barService = barService;
+
+			Mapper.CreateMap<Street, StreetModel>();
+			Mapper.CreateMap<Bar, BarModel>();
 		}
 		
 		public IEnumerable<StreetModel> Get()
 		{
-			IEnumerable<Street> streets = _streetService.GetAll();
+			IEnumerable<Street> streets = _streetService.GetAllStreets();
 
 			List<StreetModel> streetModels = new List<StreetModel>();
 
-			foreach (var s in streets)
+			foreach (var street in streets)
 			{
-				var streetModel = new StreetModel{
-				StreetId = s.StreetId,
-				Name = s.Name,
-				Descrip = s.Descrip,
-				Latitude = s.Latitude,
-				Longitude = s.Longitude,
-				ImageUrl = s.ImageUrl				
-				};
-				
-				IEnumerable<Bar> bars = _barService.GetByStreetId(s.StreetId);
+				var streetModel = new StreetModel();
+				Mapper.Map(street, streetModel);
+
+				IQueryable<Bar> bars = _barService.GetBarsByStreet(street.StreetId);
 
 				foreach (var bar in bars)
 				{
-					var barModel = new BarModel
-					{
-						BarId = bar.BarId,
-						DistrictId = bar.DistrictId,
-						StreetId = bar.StreetId,
-						Name = bar.Name,
-						Descrip = bar.Descrip,
-						Latitude = bar.Latitude,
-						Longitude = bar.Longitude,
-						ImageUrl = bar.ImageUrl,
-						Address = bar.Address,
-						Hours = bar.Hours,
-						Phone = bar.Phone,
-						WebsiteUrl = bar.WebsiteUrl,
-						FacebookUrl = bar.FacebookUrl,
-						YelpUrl = bar.YelpUrl,
-					};
-
+					var barModel = new BarModel();
+					Mapper.Map(bar, barModel);
 					streetModel.Bars.Add(barModel);
 				}
 
@@ -71,51 +53,32 @@ namespace SFBars.Api.Controllers
 
 		public StreetModel Get(int id)
 		{
-			Street entity = _streetService.GetById(id);		
+			Street street = _streetService.GetStreetById(id);
 
-			StreetModel model = new StreetModel {
-				StreetId = entity.StreetId,
-				Name = entity.Name,
-				Descrip = entity.Descrip,
-				Latitude = entity.Latitude,
-				Longitude = entity.Longitude,
-				ImageUrl = entity.ImageUrl				
-			};
+			var streetModel = new StreetModel();
+			Mapper.Map(street, streetModel);
 
-			model.Bars = new List<BarModel>();
+			streetModel.Bars = new List<BarModel>();
 
-			foreach (var bar in entity.Bars) {
-				BarModel barModel = new BarModel {
-					BarId = bar.BarId,
-					Name = bar.Name ,
-					Descrip = bar.Descrip,
-					Latitude = bar.Latitude,
-					Longitude = bar.Longitude,
-					ImageUrl = bar.ImageUrl,
-					Address = bar.Address,
-					Phone = bar.Phone,
-					WebsiteUrl = bar.WebsiteUrl,
-					FacebookUrl = bar.FacebookUrl,
-					YelpUrl = bar.YelpUrl,
-				};
-				
-				model.Bars.Add(barModel);
+			foreach (var bar in street.Bars)
+			{
+				var barModel = new BarModel();
+				Mapper.Map(bar, barModel);
+				streetModel.Bars.Add(barModel);
 			}
-		
-			return model;
+
+			return streetModel;
 		}
 
-		// POST api/values
-		public void Post([FromBody]string value)
+	
+		public void Post([FromBody]Street street)
 		{
 		}
 
-		// PUT api/values/5
 		public void Put(int id, [FromBody]string value)
 		{
 		}
 
-		// DELETE api/values/5
 		public void Delete(int id)
 		{
 		}

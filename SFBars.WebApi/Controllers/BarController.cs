@@ -7,29 +7,35 @@ using System.Web.Http;
 using SFBars.Services;
 using SFBars.Api.Models;
 using SFBars.Core.Domain;
+using AutoMapper;
 
 namespace SFBars.Api.Controllers
 {
 	public class BarController : ApiController
 	{
-		private IBarService _barService;
+		private IBarService _service;
 
 		public BarController(IBarService barService)
 		{
-			_barService = barService;
+			_service = barService;
+
+			Mapper.CreateMap<Bar, BarModel>();
 		}
 
-		public IEnumerable<Bar> Get()
+		public List<BarModel> Get()
 		{
-			return _barService.GetAll();
+			IQueryable<Bar> bars = _service.GetAllBars();
+
+			return Mapper.Map(bars, new List<BarModel>());
 		}
 
-		public Bar Get(int id)
+		public BarModel Get(int barId)
 		{
-			Bar bar = _barService.GetById(id);
-
-			return bar;
+			Bar bar = _service.GetBarById(barId);
+			
+			return Mapper.Map(bar, new BarModel());
 		}
+
 
 		// POST api/values
 		public void Post([FromBody]string value)
