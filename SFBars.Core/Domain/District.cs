@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SFBars.Core.Domain
 {
-	public class District
+	public class District : BaseEntity
 	{
 		public District()
 		{

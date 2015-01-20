@@ -10,7 +10,7 @@ namespace SFBars.Core.Domain
 	{
 		public Bar()
 		{
-			BarTypes = new List<BarType>();
+			BarTypes = new List<BarTypeBar>();
 		}
 		public int BarId { get; set; }
 		public int DistrictId { get; set; }
@@ -30,7 +30,7 @@ namespace SFBars.Core.Domain
 		public virtual District District { get; set; }
 		public virtual Street Street { get; set; }
 
-		public virtual ICollection<BarType> BarTypes { get; set; }
+		public virtual ICollection<BarTypeBar> BarTypes { get; set; }
 	}
 }
 

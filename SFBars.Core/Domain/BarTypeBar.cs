@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SFBars.Core.Domain
 {
-	public class BarTypeBar
+	public class BarTypeBar : BaseEntity
 	{		
 		public BarTypeBar()
 		{
