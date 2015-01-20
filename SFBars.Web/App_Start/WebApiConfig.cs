@@ -5,6 +5,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Mvc;
+using AutoMapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -17,17 +18,21 @@ namespace SFBars
 			var jsonFormatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
 			jsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
 			jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			
+			jsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+			config.Formatters.Remove(config.Formatters.XmlFormatter);
 
+/*
 			GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(
 				new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
 
 			GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(
 				new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
 
-
+*/
 			config.Routes.MapHttpRoute(
 				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
+				routeTemplate: "api/bars/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
 
