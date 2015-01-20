@@ -3,3 +3,4 @@
 *.dll
 *.pdb
 *.Web.csproj.App.config
+*.Web.csproj.FileListAbsolute.txt
