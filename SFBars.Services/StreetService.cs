@@ -17,12 +17,12 @@ namespace SFBars.Services
 			_repository = repository;
 		}
 
-		public IEnumerable<Street> GetAll()
+		public IQueryable<Street> GetAllStreets()
 		{
-			return _repository.Table.AsEnumerable<Street>().OrderBy(s => s.Name);			
+			return _repository.Table.AsQueryable<Street>().OrderBy(s => s.Name);			
 		}
 
-		public Street GetById(int streetId)
+		public Street GetStreetById(int streetId)
 		{
 			Street street = _repository.Table.FirstOrDefault(s => s.StreetId == streetId);
 			return street;

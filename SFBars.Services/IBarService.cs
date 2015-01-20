@@ -8,10 +8,11 @@ using SFBars.Core.Domain;
 namespace SFBars.Services
 {
 	public interface IBarService
-	{
-		IEnumerable<Bar> GetAll();
-		IEnumerable<Bar> GetByStreetId(int streetId);
-		Bar GetById(int barId);
-		
+	{		
+		Bar GetBarById(int barId);		
+		IQueryable<Bar> GetAllBars();	
+		IQueryable<Bar> GetBarsByBarType(int barTypeId);
+		IQueryable<Bar> GetBarsByDistrict(int districtId);
+		IQueryable<Bar> GetBarsByStreet(int streetId);			
 	}
 }
