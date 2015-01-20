@@ -23,7 +23,7 @@ namespace SFBars.DependencyResolution {
 	using StructureMap.Graph;
 	
     public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
+ 
 
         public DefaultRegistry() {
             Scan(
@@ -37,8 +37,9 @@ namespace SFBars.DependencyResolution {
                 });
 			For<IRepository<Street>>().Use<Repository<Street>>();
 			For<IRepository<Bar>>().Use<Repository<Bar>>();
+			For<IRepository<BarType>>().Use<Repository<BarType>>();
         }
 
-        #endregion
+       
     }
 }
