@@ -100,7 +100,7 @@ GO
 CREATE TABLE [dbo].[Bar](
 	[BarId] [int] IDENTITY(1,1) NOT NULL,
 	[StreetId] [int] NULL,
-	[DistrictId] [int] NULL,
+	[DistrictId] [int] NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Descrip] [nvarchar](max) NULL,
 	[ImageUrl] [varchar](500) NULL,
