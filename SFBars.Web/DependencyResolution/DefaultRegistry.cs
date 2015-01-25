@@ -38,6 +38,7 @@ namespace SFBars.DependencyResolution {
 			For<IRepository<Street>>().Use<Repository<Street>>();
 			For<IRepository<Bar>>().Use<Repository<Bar>>();
 			For<IRepository<BarType>>().Use<Repository<BarType>>();
+			For<IRepository<District>>().Use<Repository<District>>();
         }
 
        

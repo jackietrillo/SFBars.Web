@@ -1,6 +1,11 @@
+-- Bars and their bar type
 SELECT b.Name, bt.Name FROM Bar b
 INNER JOIN BarTypeBar btb ON b.BarId = btb.BarId
 INNER JOIN BarType bt ON btb.BarTypeId = bt.BarTypeId
 
-SELECT b.Name, d.Name FROM Bar b
+-- Bars and their district
+SELECT b.Name, d.Name AS District FROM Bar b
 INNER JOIN District d ON b.DistrictId = d.DistrictId
+
+-- Bars that are not mapped to a bar type
+SELECT * FROM Bar WHERE BarId NOT IN (SELECT BarId FROM BarTypeBar)

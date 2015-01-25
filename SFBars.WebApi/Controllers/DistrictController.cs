@@ -11,34 +11,33 @@ using SFBars.WebApi.Models;
 using AutoMapper;
 namespace SFBars.Api.Controllers
 {
-	public class BarTypeController : ApiController
+	public class DistrictController : ApiController
 	{
-		private IBarTypeService _service;
-		private IBarService _barService;		
+		private IDistrictService _service;
+		private IBarService _barService;
 
-		public BarTypeController(IBarTypeService service, IBarService barService)
+		public DistrictController(IDistrictService service, IBarService barService)
 		{
 			_service = service;
 			_barService = barService;
 
-			Mapper.CreateMap<BarType, BarTypeModel>();
+			Mapper.CreateMap<District, DistrictModel>();
 			Mapper.CreateMap<Bar, BarModel>();
 		}
 
-		public List<BarTypeModel> Get()
+		public List<DistrictModel> Get()
 		{
-			IQueryable<BarType> barTypes = _service.GetAllBarTypes();
-		
-			return Mapper.Map(barTypes, new List<BarTypeModel>());		
-			
+			IQueryable<District> districts = _service.GetAllDistricts();
+
+			return Mapper.Map(districts, new List<DistrictModel>());
 		}
 
 		public List<BarModel> Get(int id)
 		{
-			IQueryable<Bar> bars = _barService.GetBarsByBarType(id);			
+			IQueryable<Bar> bars = _barService.GetBarsByDistrict(id);
 
 			return Mapper.Map(bars, new List<BarModel>());
-		}	
+		}
 	}
 }
 

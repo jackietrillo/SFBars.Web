@@ -2,6 +2,8 @@
 	SFBars Standard Insert Script
 	Date: 01/17/2015	
 */
+USE SFBars
+
 DELETE FROM BarTypeBar
 DELETE FROM Bar
 DELETE FROM BarType
@@ -11,16 +13,38 @@ GO
 
 SET IDENTITY_INSERT SFBars.dbo.District ON
 
+DECLARE @DISTRICTBERNALHEIGHTS INT
 DECLARE @DISTRICTCASTRO INT
+DECLARE @DISTRICTFINANCIAL INT
+DECLARE @DISTRICTFISHERMANWARF INT
+DECLARE @DISTRICTHAIGHTASHBURY INT
+DECLARE @DISTRICTMARINA INT
 DECLARE @DISTRICTMISSION INT
+DECLARE @DISTRICTNOEVALLEY INT
+DECLARE @DISTRICTNORTHBEACH INT
+DECLARE @DISTRICTRICHMOND INT
 DECLARE @DISTRICTSOMA INT
+DECLARE @DISTRICTSUNSET INT
+DECLARE @DISTRICTTWINPEAKS INT
 
-SET @DISTRICTCASTRO = 1
-SET @DISTRICTMISSION = 2
-SET @DISTRICTSOMA = 3
+SET @DISTRICTBERNALHEIGHTS = 1
+SET @DISTRICTCASTRO = 2
+SET @DISTRICTFINANCIAL = 3
+SET @DISTRICTFISHERMANWARF = 4
+SET @DISTRICTHAIGHTASHBURY = 5
+SET @DISTRICTMARINA = 6
+SET @DISTRICTMISSION = 7
+SET @DISTRICTNOEVALLEY = 8
+SET @DISTRICTNORTHBEACH = 9
+SET @DISTRICTRICHMOND = 10
+SET @DISTRICTSOMA = 11
+SET @DISTRICTSUNSET = 12
+SET @DISTRICTTWINPEAKS = 13
 
+--TODO Insert more districts
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTCASTRO, 'Castro')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTMISSION, 'Mission')
+INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTNOEVALLEY, 'Noe Valley')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTSOMA, 'SoMa')
 
 SET IDENTITY_INSERT SFBars.dbo.District OFF
@@ -82,8 +106,10 @@ SET IDENTITY_INSERT SFBars.dbo.BarType OFF
 DECLARE @BARID INT
 SET @BARID = 1010
 
--- Castro - Castro Street
 
+--TODO Insert more bars (Stud, Boom Boom Room, Makeout Room, Oasis, Slate, Beauty Bar) 
+
+-- Castro - Castro Street
 SET IDENTITY_INSERT SFBars.dbo.Bar ON
 
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
@@ -201,10 +227,10 @@ SET @BARID = @BARID + 1
 
 -- Mission Church Street
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 5, 'Pilsner Inn', 'Gay Pub and sports bar with a garden patio', '225 Church St', '(415) 621-7058', '', 'http://www.pilsnerinn.com/', '', 'https://www.facebook.com/pages/Pilsner-Inn/110907268932249', 'http://www.yelp.com/biz/pilsner-inn-san-francisco', 37.767116, -122.428722, 'TableCell-PilsnerInn.png')
+	VALUES ( @BARID, @DISTRICTMISSION, 5, 'Pilsner Inn', 'Gay Pub and sports bar with a garden patio', '225 Church St', '(415) 621-7058', '1 PM - 2 AM', 'http://www.pilsnerinn.com/', '', 'https://www.facebook.com/pages/Pilsner-Inn/110907268932249', 'http://www.yelp.com/biz/pilsner-inn-san-francisco', 37.767116, -122.428722, 'TableCell-PilsnerInn.png')
 SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 5, 'Churchill', 'Cool, comfy spot for seasonal cocktails', '198 Church St', '((415) 570-9198', '', 'http://www.churchillsf.com/', '',  'https://www.facebook.com/Churchillsf', 'http://www.yelp.com/biz/churchill-san-francisco-3', 37.767898, -122.429199, 'TableCell-Churchill.png')
+	VALUES ( @BARID, @DISTRICTMISSION, 5, 'Churchills', 'Cool, comfy spot for seasonal cocktails', '198 Church St', '((415) 570-9198', '4 PM - 2 AM', 'http://www.churchillsf.com/', '',  'https://www.facebook.com/Churchillsf', 'http://www.yelp.com/biz/churchill-san-francisco-3', 37.767898, -122.429199, 'TableCell-Churchill.png')
 SET @BARID = @BARID + 1
 --INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) VALUES ( @BARID, 1, 'NAME', 'DESCRIP', 'ADDRESS', 'PHONENUMBER', ' PM - AM', 'WEBSITE', 'FB', '', 0, 0, 'TableCell-XXX.png')
 
@@ -220,7 +246,7 @@ INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hou
 SET @BARID = @BARID + 1
 --INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) VALUES ( @BARID, 6, 'NAME', 'DESCRIP', 'ADDRESS', 'PHONENUMBER', ' PM - AM', 'WEBSITE', 'FB', '', 0, 0, 'TableCell-XXX.png')
 
--- Soma 11TH Street
+-- SoMa 11TH Street
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTSOMA, 10, 'DNA Lounge', 'Multilevel SoMa nightclub', '375 11TH Street', '(415) 626-1409', 'Open 24 Hours', 'http://www.dnalounge.com', 'http://www.dnalounge.com/calendar/2015/01.html', 'https://www.facebook.com/dnalounge?ref=br_tf', 'http://www.yelp.com/biz/dna-lounge-san-francisco', 37.771075, -122.412686, 'TableCell-DNALounge.png')
 SET @BARID = @BARID + 1
@@ -232,6 +258,7 @@ INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hou
 SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTSOMA, 10, 'Audio Nightclub', 'Funky ''70s style informs this club with 2 bars, a sunken dance floor & cutting-edge light & sound', '316 11th Street', '(415) 481-0556', ' 9-30 PM - 2 AM', 'http://www.audiosf.com/', 'http://www.audiosf.com/events/', 'https://www.facebook.com/audiosf/info?tab=overview', 'http://www.yelp.com/biz/audio-san-francisco?osq=audio+sf', 37.771425, -122.413750, 'TableCell-Audio.png')
+--SET @BARID = @BARID + 1
 --INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) VALUES ( @BARID, 1, 'NAME', 'DESCRIP', 'ADDRESS', 'PHONENUMBER', ' PM - AM', 'WEBSITE', 'FB', '', 0, 0, 'TableCell-XXX.png')
 
 
@@ -280,6 +307,7 @@ SELECT @GAYBAR, BarId FROM Bar WHERE Name IN (
 INSERT INTO BarTypeBar( BarTypeId, BarId)
 SELECT @HIPSTER, BarId FROM Bar WHERE Name IN (
  'Casanova Lounge'
+, 'Churchills'
 , 'Lexington Club'
 , 'Noir Lounge'
 , 'The Royal Cuckoo'
@@ -289,7 +317,7 @@ SELECT @HIPSTER, BarId FROM Bar WHERE Name IN (
 -- Karaoke
 INSERT INTO BarTypeBar( BarTypeId, BarId)
 SELECT @KARAOKE, BarId FROM Bar WHERE Name IN (
- 'The Mint'
+ 'The Mint Karaoke'
 )
 
 -- Lounge
@@ -297,6 +325,7 @@ INSERT INTO BarTypeBar( BarTypeId, BarId)
 SELECT @LOUNGE, BarId FROM Bar WHERE Name IN (
  'Casanova Lounge'
 , 'Local Edition'
+, 'Iron & Gold'
 , 'Noir Lounge'
 , 'Blackbird'
 , 'Sugar Lounge'
@@ -326,7 +355,7 @@ SELECT @SPORTSBAR, BarId FROM Bar WHERE Name IN (
 -- Wine Bar
 INSERT INTO BarTypeBar( BarTypeId, BarId)
 SELECT @WINEBAR, BarId FROM Bar WHERE Name IN (
- 'Blush'
+ 'Blush! Wine Bar'
 , 'Brass Tacks'
 , 'Etcetera Wine Bar'
 , 'Press Club'

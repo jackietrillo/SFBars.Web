@@ -74,6 +74,7 @@ CREATE TABLE [dbo].[District](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+
 CREATE TABLE [dbo].[Street](
 	[StreetId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
@@ -86,6 +87,7 @@ CREATE TABLE [dbo].[Street](
 	[StreetId] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 
 CREATE TABLE [dbo].[BarType](
 	[BarTypeId] [int] IDENTITY(1,1) NOT NULL,
@@ -122,7 +124,6 @@ CREATE TABLE [dbo].[Bar](
 ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_District] FOREIGN KEY([DistrictId])REFERENCES [dbo].[District] ([DistrictId])
 ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_Street] FOREIGN KEY([StreetId]) REFERENCES [dbo].[Street] ([StreetId])
 
-
 CREATE TABLE [dbo].[BarTypeBar](
 	[BarTypeBarId] [int] IDENTITY(1,1) NOT NULL,
 	[BarId] [int] NOT NULL,
@@ -137,7 +138,23 @@ CREATE TABLE [dbo].[BarTypeBar](
 ALTER TABLE [dbo].[BarTypeBar]  WITH CHECK ADD  CONSTRAINT [FK_BarTypeBar_Bar] FOREIGN KEY([BarId])REFERENCES [dbo].[Bar] ([BarId])
 ALTER TABLE [dbo].[BarTypeBar]  WITH CHECK ADD  CONSTRAINT [FK_BarTypeBar_BarType] FOREIGN KEY([BarTypeId]) REFERENCES [dbo].[BarType] ([BarTypeId])
 
-
 SET ANSI_PADDING OFF
 GO
+
+
+/*
+TODO Create TopList Table 
+Columns (TopListId, BarId, Rank) 
+One (TopList) to many (Bars) relationship 
+One Top List has many Bars so BarId is a FK in TopList table, Rank is a number (1..50)
+
+TODO Create Party Table 
+Columns (PartyId, Name) 
+One (Bar) to many (Parties) relationship
+A bar can have many parties so PartyId is a FK in Bars table
+NO FK in Party Table
+FK PartyId is in Bar Table
+
+*/
+
 

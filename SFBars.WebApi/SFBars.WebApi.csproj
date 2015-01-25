@@ -84,9 +84,11 @@
   <ItemGroup>
     <Compile Include="Controllers\BarController.cs" />
     <Compile Include="Controllers\BarTypeController.cs" />
+    <Compile Include="Controllers\DistrictController.cs" />
     <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarTypeModel.cs" />
+    <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\StreetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApiDependencyResolver.cs" />
