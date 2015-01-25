@@ -18,6 +18,7 @@ namespace SFBars.Api.Models
 		public decimal Latitude { get; set; }
 		public decimal Longitude { get; set; }
 		public string WebsiteUrl { get; set; }
+		public string CalendarUrl { get; set; }
 		public string FacebookUrl { get; set; }
 		public string YelpUrl { get; set; }
 		public string ImageUrl { get; set; }
