@@ -22,15 +22,23 @@ namespace SFBars.Api.Controllers
 			_barService = barService;
 
 			Mapper.CreateMap<BarType, BarTypeModel>();
+			
 			Mapper.CreateMap<Bar, BarModel>();
 		}
 
 		public List<BarTypeModel> Get()
 		{
 			IQueryable<BarType> barTypes = _service.GetAllBarTypes();
-		
-			return Mapper.Map(barTypes, new List<BarTypeModel>());		
-			
+
+			List<BarTypeModel> barTypeModels = Mapper.Map(barTypes, new List<BarTypeModel>());
+
+			foreach (BarTypeModel barTypeModel in barTypeModels)
+			{
+				IQueryable<Bar> bars = _barService.GetBarsByBarType(barTypeModel.BarTypeId);
+				barTypeModel.Bars = Mapper.Map(bars, new List<BarModel>());
+			}
+
+			return barTypeModels;			
 		}
 
 		public List<BarModel> Get(int id)

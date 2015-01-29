@@ -195,17 +195,12 @@ INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hou
 	VALUES ( @BARID, @DISTRICTMISSION, 3, 'Blackbird', 'Inventive drinks in refined, loungey bar', '2124 Market St', '(415) 503-0630', '2 PM - 2 AM', 'http://www.blackbirdbar.com', 'http://www.blackbirdbar.com/blackbirdevents.php', 'https://www.facebook.com/BlackBirdSF', 'http://www.yelp.com/biz/blackbird-san-francisco', 37.767300, -122.429608, 'TableCell-Blackbird.png')
 SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 3, 'Press Club', 'Stylish underground wine bar', '20 Yerba Buena Lane', '(415) 744-5000', '2 PM - 2 AM', 'http://www.pressclubsf.com', 'http://www.pressclubsf.com/events', 'https://www.facebook.com/PressClubSF', 'http://www.yelp.com/biz/press-club-san-francisco', 37.785984, -122.404503, 'TableCell-PressClub.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 3, 'Sutter Station Tavern', 'Low-key fixture for drinks & pub grub', '554 Market Street', '(415) 434-4768', ' 7 AM - 2 AM', 'http://www.upcidersf.com/', 'http://www.upcidersf.com/private_events.php', 'https://www.facebook.com/pages/Sutter-Station-Tavern-Cocktail-Lounge/108891659145000', 'http://www.yelp.com/biz/sutter-station-san-francisco?osq=sutter+station+tavern', 37.789989, -122.400916, 'TableCell-SutterStationTavern.png')
+	VALUES ( @BARID, @DISTRICTSOMA, 3, 'Press Club', 'Stylish underground wine bar', '20 Yerba Buena Lane', '(415) 744-5000', '2 PM - 2 AM', 'http://www.pressclubsf.com', 'http://www.pressclubsf.com/events', 'https://www.facebook.com/PressClubSF', 'http://www.yelp.com/biz/press-club-san-francisco', 37.785984, -122.404503, 'TableCell-PressClub.png')
 SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTMISSION, 3, 'The Showdown', 'DJs spin an eclectic mix of hip-hop & dance tunes at this SoMa hangout known for its happy hour.', '10 6th Street', '(415) 503-0684', '5 PM - 2 AM', 'http://showdownsf.com/', '', 'https://www.facebook.com/pages/Showdown/113069452044945?rf=513097312091717', 'http://www.yelp.com/biz/showdown-san-francisco-2', 37.781843, -122.410074, 'TableCell-TheShowdown.png')
 SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 3, 'Local Edition', 'An extensive cocktail menu is offered at this underground lounge with a vintage newspaper theme.', '691 Market Street', '(415) 795-1375', '5 PM - 2 AM', 'http://localeditionsf.com/?special=1', '', 'https://www.facebook.com/localeditionsf', 'http://www.yelp.com/biz/local-edition-san-francisco', 37.787621, -122.402910, 'TableCell-LocalEdition.png')
-SET @BARID = @BARID + 1
+
 --INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) VALUES ( @BARID, 1, 'NAME', 'DESCRIP', 'ADDRESS', 'PHONENUMBER', ' PM - AM', 'WEBSITE', 'FB', '', 0, 0, 'TableCell-XXX.png')
 
 -- Mission - Mission Street
@@ -224,8 +219,6 @@ SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTMISSION, 4, 'The Armory Club', 'Porn company Kink.com''s dimly lit cocktail bar resembles an upscale Victorian parlor.', '1799 Mission Street', '(415) 431-5300', '5 PM - 2 AM', 'http://www.armoryclub.com/', '', 'https://www.facebook.com/TheArmoryClub', 'http://www.yelp.com/biz/the-armory-club-san-francisco-2', 37.768415, -122.419761, 'TableCell-TheArmoryClub.png')
 SET @BARID = @BARID + 1
-
--- Mission Church Street
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTMISSION, 5, 'Pilsner Inn', 'Gay Pub and sports bar with a garden patio', '225 Church St', '(415) 621-7058', '1 PM - 2 AM', 'http://www.pilsnerinn.com/', '', 'https://www.facebook.com/pages/Pilsner-Inn/110907268932249', 'http://www.yelp.com/biz/pilsner-inn-san-francisco', 37.767116, -122.428722, 'TableCell-PilsnerInn.png')
 SET @BARID = @BARID + 1
@@ -258,6 +251,13 @@ INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hou
 SET @BARID = @BARID + 1
 INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES ( @BARID, @DISTRICTSOMA, 10, 'Audio Nightclub', 'Funky ''70s style informs this club with 2 bars, a sunken dance floor & cutting-edge light & sound', '316 11th Street', '(415) 481-0556', ' 9-30 PM - 2 AM', 'http://www.audiosf.com/', 'http://www.audiosf.com/events/', 'https://www.facebook.com/audiosf/info?tab=overview', 'http://www.yelp.com/biz/audio-san-francisco?osq=audio+sf', 37.771425, -122.413750, 'TableCell-Audio.png')
+SET @BARID = @BARID + 1
+INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES ( @BARID, @DISTRICTSOMA, 3, 'Local Edition', 'An extensive cocktail menu is offered at this underground lounge with a vintage newspaper theme.', '691 Market Street', '(415) 795-1375', '5 PM - 2 AM', 'http://localeditionsf.com/?special=1', '', 'https://www.facebook.com/localeditionsf', 'http://www.yelp.com/biz/local-edition-san-francisco', 37.787621, -122.402910, 'TableCell-LocalEdition.png')
+SET @BARID = @BARID + 1
+INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES ( @BARID, @DISTRICTMISSION, 3, 'Sutter Station Tavern', 'Low-key fixture for drinks & pub grub', '554 Market Street', '(415) 434-4768', ' 7 AM - 2 AM', 'http://www.upcidersf.com/', 'http://www.upcidersf.com/private_events.php', 'https://www.facebook.com/pages/Sutter-Station-Tavern-Cocktail-Lounge/108891659145000', 'http://www.yelp.com/biz/sutter-station-san-francisco?osq=sutter+station+tavern', 37.789989, -122.400916, 'TableCell-SutterStationTavern.png')
+
 --SET @BARID = @BARID + 1
 --INSERT INTO Bar (BarId, DistrictId, StreetId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) VALUES ( @BARID, 1, 'NAME', 'DESCRIP', 'ADDRESS', 'PHONENUMBER', ' PM - AM', 'WEBSITE', 'FB', '', 0, 0, 'TableCell-XXX.png')
 

@@ -8,6 +8,8 @@ namespace SFBars.Data.Mappings
 		public BarTypeMap()
 		{
 			this.ToTable("BarType");
+
+
 		}
 	}
 }

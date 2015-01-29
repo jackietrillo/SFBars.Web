@@ -10,7 +10,15 @@ namespace SFBars.Data.Mappings
 		{
 			this.ToTable("BarTypeBar");
 
-			
+
+			this.HasRequired(b => b.Bar)
+								 .WithMany(s => s.BarTypes)
+								 .HasForeignKey(b => b.BarId);
+
+
+			this.HasRequired(b => b.BarType)
+								 .WithMany(s => s.Bars)
+								 .HasForeignKey(b => b.BarId);
 		}
 	}
 }
