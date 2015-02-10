@@ -197,6 +197,24 @@ BEGIN
 	DROP TABLE [Music]
 END 
 
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UserProfile]') AND type in (N'U'))
+BEGIN
+	DROP TABLE UserProfile
+END
+
+CREATE TABLE [dbo].[UserProfile](
+	[UserId] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](56) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[UserName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 -- Create District Table
 CREATE TABLE [dbo].[District](
 	[DistrictId] [int] IDENTITY(1,1) NOT NULL,
@@ -270,6 +288,7 @@ CREATE TABLE [dbo].[Music](
 
 -- Add Music Table Constraints
 ALTER TABLE [dbo].[Music]  WITH CHECK ADD  CONSTRAINT [FK_Music_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
+
 
 -- Create Bar Table
 CREATE TABLE [dbo].[Bar](
