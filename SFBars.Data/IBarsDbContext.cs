@@ -8,7 +8,7 @@ using SFBars.Core.Domain;
 
 namespace SFBars.Data
 {
-	public interface ISFBarsDbContext
+	public interface IBarsDbContext
 	{
 		/// <summary>
 		/// Get DbSet

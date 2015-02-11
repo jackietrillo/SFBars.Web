@@ -2,3 +2,4 @@ C:\sites\SFBars.Web\SFBars.Core\bin\Debug\SFBars.Core.dll
 C:\sites\SFBars.Web\SFBars.Core\bin\Debug\SFBars.Core.pdb
 C:\sites\SFBars.Web\SFBars.Core\obj\Debug\SFBars.Core.dll
 C:\sites\SFBars.Web\SFBars.Core\obj\Debug\SFBars.Core.pdb
+C:\sites\SFBars.Web\SFBars.Core\obj\Debug\SFBars.Core.csprojResolveAssemblyReference.cache

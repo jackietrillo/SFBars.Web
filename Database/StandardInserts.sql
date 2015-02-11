@@ -6,19 +6,15 @@
 
 USE SFBars
 
-IF NOT EXISTS (SELECT 1 FROM UserProfile WHERE UserId = 1000)
-BEGIN
-	SET IDENTITY_INSERT SFBars.dbo.UserProfile ON
-	INSERT INTO UserProfile (UserId, Username) VALUES (1000, 'SYSTEM')
-	SET IDENTITY_INSERT SFBars.dbo.UserProfile OFF
-END 
-
 DELETE FROM BarTypeBar
+DELETE FROM TopList
+DELETE FROM Party
+DELETE FROM [Event]
 DELETE FROM Bar
 DELETE FROM BarType
 DELETE FROM District
 DELETE FROM Music
-DELETE FROM TopList
+GO
 
 SET IDENTITY_INSERT SFBars.dbo.District ON
 
@@ -105,177 +101,156 @@ INSERT INTO Music (MusicId, Name) VALUES (@ROCK, 'Rock')
 
 SET IDENTITY_INSERT SFBars.dbo.Music OFF
 
-
-DECLARE @BARID INT
-SET @BARID = 1009
-
-
 --TODO Insert more bars (Mikey's, Stud, Makeout Room, Oasis, Slate, Beauty Bar, The Fillmore, Raven Bar, Monarch, Audio Night Club) 
 
-
-SET IDENTITY_INSERT SFBars.dbo.Bar ON
-
 -- Bernal Heights
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTBERNALHEIGHTS, 'The Wild Side West', 'Longtime lesbian bar since 1962 offering art-covered walls, a pool table, a big TV & a back garden.', '424 Cortland Avenue', '(415) 647-3099', '2 PM - 2 AM', 'http://wildsidewest.com/', 'http://wildsidewest.com/events.html', '', 'http://www.yelp.com/biz/wild-side-west-san-francisco', 37.739014, -122.417206, 'TableCell-TheWildSideWest.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTBERNALHEIGHTS, 'The Wild Side West', 'Longtime lesbian bar since 1962 offering art-covered walls, a pool table, a big TV & a back garden.', '424 Cortland Avenue', '(415) 647-3099', '2 PM - 2 AM', 'http://wildsidewest.com/', 'http://wildsidewest.com/events.html', '', 'http://www.yelp.com/biz/wild-side-west-san-francisco', 37.739014, -122.417206, 'TableCell-TheWildSideWest.png')
 
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTBERNALHEIGHTS, 'The Lucky Horseshoe', '', '453 Cortland Avenue', '(415) 282-3456', '4 PM - 1 AM', 'http://www.theluckyhorseshoebar.com/', 'http://www.theluckyhorseshoebar.com/calendar/?view=calendar&month=February-2015', 'https://www.facebook.com/pages/The-Lucky-Horseshoe/223073864424811', 'http://www.yelp.com/biz/the-lucky-horseshoe-san-francisco', 37.739297, -122.416804, 'TableCell-TheLuckyHorseShoe.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTBERNALHEIGHTS, 'The Lucky Horseshoe', '', '453 Cortland Avenue', '(415) 282-3456', '4 PM - 1 AM', 'http://www.theluckyhorseshoebar.com/', 'http://www.theluckyhorseshoebar.com/calendar/?view=calendar&month=February-2015', 'https://www.facebook.com/pages/The-Lucky-Horseshoe/223073864424811', 'http://www.yelp.com/biz/the-lucky-horseshoe-san-francisco', 37.739297, -122.416804, 'TableCell-TheLuckyHorseShoe.png')
 
 
 -- Castro 
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, '440 Castro', 'Gay bar known for beards & booze', '440 Castro St', '(415) 621-8732', '5 PM - 2 AM', 'http://www.the440.com/', 'http://www.the440.com/calendar.html', 'http://www.facebook.com/440castro', 'http://www.yelp.com/biz/440-castro-san-francisco', 37.761841, -122.435054, 'TableCell-440Castro.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO,'Badlands', 'Techno & ''80s hits play at this veteran gay club with a lively dance floor & lots of drink specials', '4121 18th St', '(415) 626-9320', '5 PM - 2 AM', 'http://www.sfbadlands.com', '', 'https://www.facebook.com/pages/Badlands/158245524202434', 'http://www.yelp.com/biz/sf-badlands-san-francisco', 37.760700, -122.435468, 'TableCell-Badlands.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Blush! Wine Bar', 'Dozens of vintages plus bistro fare', '476 Castro St', '(415) 621-2811', '5 PM - 2 AM', 'http://www.blushwinebar.com', 'http://www.blushwinebar.com/events', 'https://www.facebook.com/blushwinebar', 'http://www.yelp.com/biz/blush-san-francisco', 37.761281, -122.435206, 'TableCell-Blush.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'QBar', 'Castro gay bar with a young male crowd', '456 Castro St', '(415) 864-2877', '5 PM - 2 AM', 'http://www.qbarsf.com', '', 'https://www.facebook.com/QbarSF', 'http://www.yelp.com/biz/q-bar-san-francisco?osq=qbar', 37.761622, -122.435285, 'TableCell-QBar.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Twin Peaks Tavern', 'Historical gay bar & Castro landmark ', '401 Castro Street', '(415) 864-9470', '8:00 AM – 2:00 AM', 'http://www.twinpeakstavern.com/', '', 'https://www.facebook.com/pages/Twin-Peaks-Tavern/107386915965070', 'http://www.yelp.com/biz/twin-peaks-tavern-san-francisco', 37.762353, -122.434964, 'TableCell-TwinPeaksTavern.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Midnight Sun', 'Video Bar & longtime Castro fixture', '4067 18th St', '(415) 861-4186', '5 PM - 2 AM', 'http://www.midnightsunsf.com/', '', 'https://www.facebook.com/midnightsunsf', 'http://www.yelp.com/biz/midnight-sun-san-francisco', 37.760811, -122.434316, 'TableCell-MidnightSun.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'The Mix', 'Bar', '4086 18th St', '(415) 431-8616', '5 PM - 2 AM', 'http://www.sfmixbar.com', 'http://www.sfmixbar.com/eventsnpics.html', 'https://www.facebook.com/MixbarSF?rf=186687948020976', '', 37.761116, -122.434422, 'TableCell-TheMix.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Toad Hall', 'Dance Club', '4146 18th St', '(415) 558-0893', '5 PM - 2 AM', 'http://www.toadhallbar.com', '', 'https://www.facebook.com/ToadHallBar', 'http://www.yelp.com/biz/the-mix-san-francisco', 37.760991, -122.435737, 'TableCell-ToadHall.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Moby Dick', 'Storied Bar', '4049 18th St', '(415) 861-1199', '5 PM - 2 AM', 'http://www.mobydicksf.com/', 'http://www.mobydicksf.com/events.php', 'https://www.facebook.com/MobyDickBar', 'http://www.yelp.com/biz/moby-dick-san-francisco', 37.760851, -122.433694, 'TableCell-MobyDick.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'The Edge', 'Local gay bar with nightly themes', '4149 18th Street', '(415) 863-4027', '12 PM - 2 AM', 'http://www.edgesf.com/', 'http://www.edgesf.com/', 'https://www.facebook.com/EdgeSF', '', 37.760664, -122.435947, 'TableCell-TheEdge.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTCASTRO, 'Harvey''s', 'Named for gay activist Harvey Milk, this bar offers drinks, food, trivia & comedy shows.', '500 Castro Street', '(415) 431-4278', '11 AM - 11 PM', 'http://www.harveyssf.com/', '', 'https://www.facebook.com/SFHarveys', 'http://www.yelp.com/biz/harveys-san-francisco', 37.760752, -122.435217, 'TableCell-Harveys.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, '440 Castro', 'Gay bar known for beards & booze', '440 Castro St', '(415) 621-8732', '5 PM - 2 AM', 'http://www.the440.com/', 'http://www.the440.com/calendar.html', 'http://www.facebook.com/440castro', 'http://www.yelp.com/biz/440-castro-san-francisco', 37.761841, -122.435054, 'TableCell-440Castro.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO,'Badlands', 'Techno & ''80s hits play at this veteran gay club with a lively dance floor & lots of drink specials', '4121 18th St', '(415) 626-9320', '5 PM - 2 AM', 'http://www.sfbadlands.com', '', 'https://www.facebook.com/pages/Badlands/158245524202434', 'http://www.yelp.com/biz/sf-badlands-san-francisco', 37.760700, -122.435468, 'TableCell-Badlands.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Blush! Wine Bar', 'Dozens of vintages plus bistro fare', '476 Castro St', '(415) 621-2811', '5 PM - 2 AM', 'http://www.blushwinebar.com', 'http://www.blushwinebar.com/events', 'https://www.facebook.com/blushwinebar', 'http://www.yelp.com/biz/blush-san-francisco', 37.761281, -122.435206, 'TableCell-Blush.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'QBar', 'Castro gay bar with a young male crowd', '456 Castro St', '(415) 864-2877', '5 PM - 2 AM', 'http://www.qbarsf.com', '', 'https://www.facebook.com/QbarSF', 'http://www.yelp.com/biz/q-bar-san-francisco?osq=qbar', 37.761622, -122.435285, 'TableCell-QBar.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Twin Peaks Tavern', 'Historical gay bar & Castro landmark ', '401 Castro Street', '(415) 864-9470', '8:00 AM – 2:00 AM', 'http://www.twinpeakstavern.com/', '', 'https://www.facebook.com/pages/Twin-Peaks-Tavern/107386915965070', 'http://www.yelp.com/biz/twin-peaks-tavern-san-francisco', 37.762353, -122.434964, 'TableCell-TwinPeaksTavern.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Midnight Sun', 'Video Bar & longtime Castro fixture', '4067 18th St', '(415) 861-4186', '5 PM - 2 AM', 'http://www.midnightsunsf.com/', '', 'https://www.facebook.com/midnightsunsf', 'http://www.yelp.com/biz/midnight-sun-san-francisco', 37.760811, -122.434316, 'TableCell-MidnightSun.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'The Mix', 'Bar', '4086 18th St', '(415) 431-8616', '5 PM - 2 AM', 'http://www.sfmixbar.com', 'http://www.sfmixbar.com/eventsnpics.html', 'https://www.facebook.com/MixbarSF?rf=186687948020976', '', 37.761116, -122.434422, 'TableCell-TheMix.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Toad Hall', 'Dance Club', '4146 18th St', '(415) 558-0893', '5 PM - 2 AM', 'http://www.toadhallbar.com', '', 'https://www.facebook.com/ToadHallBar', 'http://www.yelp.com/biz/the-mix-san-francisco', 37.760991, -122.435737, 'TableCell-ToadHall.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Moby Dick', 'Storied Bar', '4049 18th St', '(415) 861-1199', '5 PM - 2 AM', 'http://www.mobydicksf.com/', 'http://www.mobydicksf.com/events.php', 'https://www.facebook.com/MobyDickBar', 'http://www.yelp.com/biz/moby-dick-san-francisco', 37.760851, -122.433694, 'TableCell-MobyDick.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'The Edge', 'Local gay bar with nightly themes', '4149 18th Street', '(415) 863-4027', '12 PM - 2 AM', 'http://www.edgesf.com/', 'http://www.edgesf.com/', 'https://www.facebook.com/EdgeSF', '', 37.760664, -122.435947, 'TableCell-TheEdge.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTCASTRO, 'Harvey''s', 'Named for gay activist Harvey Milk, this bar offers drinks, food, trivia & comedy shows.', '500 Castro Street', '(415) 431-4278', '11 AM - 11 PM', 'http://www.harveyssf.com/', '', 'https://www.facebook.com/SFHarveys', 'http://www.yelp.com/biz/harveys-san-francisco', 37.760752, -122.435217, 'TableCell-Harveys.png')
 
 -- Mission 
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Elbo Room', 'Bar/Club with dancing, drinks and music', '647 Valencia St', '(415) 552-7788', '5 PM - 2 AM', 'http://www.elbo.com/', 'http://www.elbo.com/Calendar.php', 'https://www.facebook.com/pages/Elbo-Room/116330261711156', '', 37.762511, -122.421516, 'TableCell-ElboRoom.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Chapel', 'Live Music venue with full bar & food', '777 Valencia St', '(415) 551-5157', '7 PM - 2 AM', 'http://www.thechapelsf.com/', '', 'https://www.facebook.com/TheChapelSF', 'http://www.yelp.com/biz/elbo-room-san-francisco', 37.760522, -122.421200, 'TableCell-TheChapel.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION,'Amnesia', 'Club revered for big range of live music', '853 Valencia St', '(415) 970-0012', '5 PM - 2 AM', 'http://amnesiathebar.com', 'http://amnesiathebar.com/newp/calendar/', 'https://www.facebook.com/amnesiaSF', 'http://www.yelp.com/biz/amnesia-san-francisco', 37.759284, -122.421158, 'TableCell-Amnesia.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Lexington Club', 'Lesbian bar with pool & jukebox or DJs', '3464 19th St', '(415) 863-2052', '3 PM - 2 AM', 'http://lexingtonclub.com/', 'http://lexingtonclub.com/upcoming-events/', 'https://www.facebook.com/lexingtonclub.sf', 'http://www.yelp.com/biz/lexington-club-san-francisco', 37.760360, -122.420884, 'TableCell-LexingtonClub.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Casanova Lounge', 'Hipster-friendly lounge with funky decor', '527 Valencia St', '(415) 863-9328', '4 PM - 2 AM', 'http://www.casanovasf.com/', '', 'https://www.facebook.com/casanovaloungesf', 'http://www.yelp.com/biz/casanova-lounge-san-francisco', 37.764398, -122.421655, 'TableCell-CasanovaLounge.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Blondie''s Bar', 'Loud music and lots of booze plus patio', '540 Valencia St', '(415) 864-2419', '4 PM - 2 AM', 'http://www.blondiesbarsf.com', '', 'https://www.facebook.com/blondiesbarsf', '', 37.764234, -122.422041, 'TableCell-BlondiesBar.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Etcetera Wine Bar', 'Wine Bar & French Bites', '795 Valencia St', '(415) 926-5477', '5 PM - 1:30 AM', 'http://www.etceterawinebar.com/', '', 'https://www.facebook.com/pages/Etcetera-Wine-Bar/193426027388135', 'http://www.yelp.com/biz/etcetera-wine-bar-san-francisco', 37.760278, -122.421339, 'TableCell-Etcetera.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Cafe', 'Dance Club with DJs and theme events', '2369 Market St', '(415) 861-3846', '5 PM - 2 AM', 'http://www.cafesf.com/', 'http://www.cafesf.com/events/boybar-fridays/', 'https://www.facebook.com/TheCafeSF', 'http://www.yelp.com/biz/the-caf%C3%A9-san-francisco-4?osq=cafe+sf', 37.762980, -122.434332, 'TableCell-TheCafe.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Mint Karaoke', 'Legendary Karaoke bar', '1942 Market St', '(415) 626-4726', '2:30 PM - 2 AM', 'http://www.themint.net/', 'http://www.themint.net/', 'https://www.facebook.com/pages/The-Mint-Karaoke-Lounge/107352429301675', 'http://www.yelp.com/biz/the-mint-san-francisco', 37.770267, -122.425843, 'TableCell-TheMint.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Beaux', 'Gay bar with dance music all night', '2344 Market St', '(415) 658-7712', '4:00 PM - 2 AM', 'http://www.beauxsf.com/', 'http://www.beauxsf.com/?page_id=266', 'https://www.facebook.com/beauxsf', 'http://www.yelp.com/biz/beaux-san-francisco', 37.763626, -122.434230, 'TableCell-Beaux.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Lucky 13', 'Raucous rock ''n'' roll bar', '2140 Market St', '(415) 487-1313', '11:00 AM - 2 AM', '', '', 'https://www.facebook.com/Lucky13SF', 'http://www.yelp.com/biz/lucky-13-san-francisco', 37.767104, -122.429855, 'TableCell-Lucky13.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Blackbird', 'Inventive drinks in refined, loungey bar', '2124 Market St', '(415) 503-0630', '2 PM - 2 AM', 'http://www.blackbirdbar.com', 'http://www.blackbirdbar.com/blackbirdevents.php', 'https://www.facebook.com/BlackBirdSF', 'http://www.yelp.com/biz/blackbird-san-francisco', 37.767300, -122.429608, 'TableCell-Blackbird.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Showdown', 'DJs spin an eclectic mix of hip-hop & dance tunes at this SoMa hangout known for its happy hour.', '10 6th Street', '(415) 503-0684', '5 PM - 2 AM', 'http://showdownsf.com/', '', 'https://www.facebook.com/pages/Showdown/113069452044945?rf=513097312091717', 'http://www.yelp.com/biz/showdown-san-francisco-2', 37.781843, -122.410074, 'TableCell-TheShowdown.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'El Rio', 'Gay friendly neighborhood bar', '3158 Mission St', '(415) 282-3325', '5 PM - 2 AM', 'http://www.elriosf.com/', 'http://www.elriosf.com/calendar/', 'https://www.facebook.com/elriosf', 'http://www.yelp.com/biz/el-rio-san-francisco', 37.746794, -122.419396, 'TableCell-ElRio.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Iron & Gold', 'Cozy cocktail bar with a vintage vibe', '3187 Mission St', '(415) 824-1447', '5 PM - 2 AM', 'http://www.ironandgoldsf.com/', 'https://www.google.com/calendar/embed?src=8e1ubg0vuljebv5a5ut8ennf3s%40group.calendar.google.com&ctz=America/Los_Angeles', 'https://www.facebook.com/pages/Iron-Gold/148296501945286', 'http://www.yelp.com/biz/iron-and-gold-san-francisco', 37.745738, -122.419282, 'TableCell-Iron&Gold.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Royal Cuckoo', 'The barkeeps spin vintage records at this dark bar with church pew seating & a throwback vibe', '3202 Mission Street', '(415) 550-8667', '5 PM - 2 AM', 'http://royalcuckoo.com/', 'http://royalcuckoo.com/live-music/', 'https://www.facebook.com/pages/The-Royal-Cuckoo-Organ-Lounge/141220122598547', 'http://www.yelp.com/biz/royal-cuckoo-san-francisco', 37.745399, -122.420356, 'TableCell-TheRoyalCuckoo.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Sloane SF', 'Stylish, multilevel club with DJs', '1525 Mission Street', '(415) 621-7007 ', '9-30 PM - 2 AM', 'http://www.sloanesf.com/', 'http://www.sloanesf.com/rsvp-sloane-guestlist.html', 'https://www.facebook.com/pages/Nightclub-Sloane-SF/221619711290958?rf=391728257520313', 'http://www.yelp.com/biz/sloane-san-francisco-2?osq=sloan+sf', 37.773725, -122.417352, 'TableCell-SloanSF.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'The Armory Club', 'Porn company Kink.com''s dimly lit cocktail bar resembles an upscale Victorian parlor.', '1799 Mission Street', '(415) 431-5300', '5 PM - 2 AM', 'http://www.armoryclub.com/', '', 'https://www.facebook.com/TheArmoryClub', 'http://www.yelp.com/biz/the-armory-club-san-francisco-2', 37.768415, -122.419761, 'TableCell-TheArmoryClub.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Pilsner Inn', 'Gay Pub and sports bar with a garden patio', '225 Church St', '(415) 621-7058', '1 PM - 2 AM', 'http://www.pilsnerinn.com/', '', 'https://www.facebook.com/pages/Pilsner-Inn/110907268932249', 'http://www.yelp.com/biz/pilsner-inn-san-francisco', 37.767116, -122.428722, 'TableCell-PilsnerInn.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Churchills', 'Cool, comfy spot for seasonal cocktails', '198 Church St', '((415) 570-9198', '4 PM - 2 AM', 'http://www.churchillsf.com/', '',  'https://www.facebook.com/Churchillsf', 'http://www.yelp.com/biz/churchill-san-francisco-3', 37.767898, -122.429199, 'TableCell-Churchill.png')
 
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Elbo Room', 'Bar/Club with dancing, drinks and music', '647 Valencia St', '(415) 552-7788', '5 PM - 2 AM', 'http://www.elbo.com/', 'http://www.elbo.com/Calendar.php', 'https://www.facebook.com/pages/Elbo-Room/116330261711156', '', 37.762511, -122.421516, 'TableCell-ElboRoom.png')
 
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Sugar Lounge', 'Intimate lounge with sweet specialty drinks & free happy-hour snacks in a sleek space with sofas', '377 Hayes Street', '(415) 255-7144', '4 PM - 2 AM', 'http://sugarloungesf.com', 'http://sugarloungesf.com/calendar/', 'https://www.facebook.com/SugarLoungeSF?ref=br_tf', 'http://www.yelp.com/biz/sugar-lounge-san-francisco', 37.776854, -122.422521, 'TableCell-SugarLounge.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Brass Tacks', 'Laid-back, yet stylish bar pours cocktails, wines on tap & craft beers under snazzy light fixtures. Laid-back, yet stylish bar pours cocktails, wines on tap & craft beers under snazzy light fixtures.', '488 Hayes Street', 'PHONENUMBER', '2 PM - 2 AM', 'http://brasstackssf.com/', '', 'https://www.facebook.com/brasstackswines/timeline', 'http://www.yelp.com/biz/brass-tacks-san-francisco-2?osq=brasstrack', 37.776921, -122.424409, 'TableCell-BrassTracks.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTMISSION, 'Noir Lounge', 'Swanky wine bar & brewpub with a vintage Jazz-era vibe screens old films throughout', '581 Hayes Street', '(415) 431-6647', '3 PM - 1 AM', 'http://noir-sf.com', 'http://noir-sf.com/#!calendar/', 'https://www.facebook.com/NoirLoungeSF', 'http://www.yelp.com/biz/noir-lounge-san-francisco', 37.776418, -122.425914, 'TableCell-NoirLounge.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Chapel', 'Live Music venue with full bar & food', '777 Valencia St', '(415) 551-5157', '7 PM - 2 AM', 'http://www.thechapelsf.com/', '', 'https://www.facebook.com/TheChapelSF', 'http://www.yelp.com/biz/elbo-room-san-francisco', 37.760522, -122.421200, 'TableCell-TheChapel.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION,'Amnesia', 'Club revered for big range of live music', '853 Valencia St', '(415) 970-0012', '5 PM - 2 AM', 'http://amnesiathebar.com', 'http://amnesiathebar.com/newp/calendar/', 'https://www.facebook.com/amnesiaSF', 'http://www.yelp.com/biz/amnesia-san-francisco', 37.759284, -122.421158, 'TableCell-Amnesia.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Lexington Club', 'Lesbian bar with pool & jukebox or DJs', '3464 19th St', '(415) 863-2052', '3 PM - 2 AM', 'http://lexingtonclub.com/', 'http://lexingtonclub.com/upcoming-events/', 'https://www.facebook.com/lexingtonclub.sf', 'http://www.yelp.com/biz/lexington-club-san-francisco', 37.760360, -122.420884, 'TableCell-LexingtonClub.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Casanova Lounge', 'Hipster-friendly lounge with funky decor', '527 Valencia St', '(415) 863-9328', '4 PM - 2 AM', 'http://www.casanovasf.com/', '', 'https://www.facebook.com/casanovaloungesf', 'http://www.yelp.com/biz/casanova-lounge-san-francisco', 37.764398, -122.421655, 'TableCell-CasanovaLounge.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Blondie''s Bar', 'Loud music and lots of booze plus patio', '540 Valencia St', '(415) 864-2419', '4 PM - 2 AM', 'http://www.blondiesbarsf.com', '', 'https://www.facebook.com/blondiesbarsf', '', 37.764234, -122.422041, 'TableCell-BlondiesBar.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Etcetera Wine Bar', 'Wine Bar & French Bites', '795 Valencia St', '(415) 926-5477', '5 PM - 1:30 AM', 'http://www.etceterawinebar.com/', '', 'https://www.facebook.com/pages/Etcetera-Wine-Bar/193426027388135', 'http://www.yelp.com/biz/etcetera-wine-bar-san-francisco', 37.760278, -122.421339, 'TableCell-Etcetera.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Cafe', 'Dance Club with DJs and theme events', '2369 Market St', '(415) 861-3846', '5 PM - 2 AM', 'http://www.cafesf.com/', 'http://www.cafesf.com/events/boybar-fridays/', 'https://www.facebook.com/TheCafeSF', 'http://www.yelp.com/biz/the-caf%C3%A9-san-francisco-4?osq=cafe+sf', 37.762980, -122.434332, 'TableCell-TheCafe.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Mint Karaoke', 'Legendary Karaoke bar', '1942 Market St', '(415) 626-4726', '2:30 PM - 2 AM', 'http://www.themint.net/', 'http://www.themint.net/', 'https://www.facebook.com/pages/The-Mint-Karaoke-Lounge/107352429301675', 'http://www.yelp.com/biz/the-mint-san-francisco', 37.770267, -122.425843, 'TableCell-TheMint.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Beaux', 'Gay bar with dance music all night', '2344 Market St', '(415) 658-7712', '4:00 PM - 2 AM', 'http://www.beauxsf.com/', 'http://www.beauxsf.com/?page_id=266', 'https://www.facebook.com/beauxsf', 'http://www.yelp.com/biz/beaux-san-francisco', 37.763626, -122.434230, 'TableCell-Beaux.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Lucky 13', 'Raucous rock ''n'' roll bar', '2140 Market St', '(415) 487-1313', '11:00 AM - 2 AM', '', '', 'https://www.facebook.com/Lucky13SF', 'http://www.yelp.com/biz/lucky-13-san-francisco', 37.767104, -122.429855, 'TableCell-Lucky13.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Blackbird', 'Inventive drinks in refined, loungey bar', '2124 Market St', '(415) 503-0630', '2 PM - 2 AM', 'http://www.blackbirdbar.com', 'http://www.blackbirdbar.com/blackbirdevents.php', 'https://www.facebook.com/BlackBirdSF', 'http://www.yelp.com/biz/blackbird-san-francisco', 37.767300, -122.429608, 'TableCell-Blackbird.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Showdown', 'DJs spin an eclectic mix of hip-hop & dance tunes at this SoMa hangout known for its happy hour.', '10 6th Street', '(415) 503-0684', '5 PM - 2 AM', 'http://showdownsf.com/', '', 'https://www.facebook.com/pages/Showdown/113069452044945?rf=513097312091717', 'http://www.yelp.com/biz/showdown-san-francisco-2', 37.781843, -122.410074, 'TableCell-TheShowdown.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'El Rio', 'Gay friendly neighborhood bar', '3158 Mission St', '(415) 282-3325', '5 PM - 2 AM', 'http://www.elriosf.com/', 'http://www.elriosf.com/calendar/', 'https://www.facebook.com/elriosf', 'http://www.yelp.com/biz/el-rio-san-francisco', 37.746794, -122.419396, 'TableCell-ElRio.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Iron & Gold', 'Cozy cocktail bar with a vintage vibe', '3187 Mission St', '(415) 824-1447', '5 PM - 2 AM', 'http://www.ironandgoldsf.com/', 'https://www.google.com/calendar/embed?src=8e1ubg0vuljebv5a5ut8ennf3s%40group.calendar.google.com&ctz=America/Los_Angeles', 'https://www.facebook.com/pages/Iron-Gold/148296501945286', 'http://www.yelp.com/biz/iron-and-gold-san-francisco', 37.745738, -122.419282, 'TableCell-Iron&Gold.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Royal Cuckoo', 'The barkeeps spin vintage records at this dark bar with church pew seating & a throwback vibe', '3202 Mission Street', '(415) 550-8667', '5 PM - 2 AM', 'http://royalcuckoo.com/', 'http://royalcuckoo.com/live-music/', 'https://www.facebook.com/pages/The-Royal-Cuckoo-Organ-Lounge/141220122598547', 'http://www.yelp.com/biz/royal-cuckoo-san-francisco', 37.745399, -122.420356, 'TableCell-TheRoyalCuckoo.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Sloane SF', 'Stylish, multilevel club with DJs', '1525 Mission Street', '(415) 621-7007 ', '9-30 PM - 2 AM', 'http://www.sloanesf.com/', 'http://www.sloanesf.com/rsvp-sloane-guestlist.html', 'https://www.facebook.com/pages/Nightclub-Sloane-SF/221619711290958?rf=391728257520313', 'http://www.yelp.com/biz/sloane-san-francisco-2?osq=sloan+sf', 37.773725, -122.417352, 'TableCell-SloanSF.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'The Armory Club', 'Porn company Kink.com''s dimly lit cocktail bar resembles an upscale Victorian parlor.', '1799 Mission Street', '(415) 431-5300', '5 PM - 2 AM', 'http://www.armoryclub.com/', '', 'https://www.facebook.com/TheArmoryClub', 'http://www.yelp.com/biz/the-armory-club-san-francisco-2', 37.768415, -122.419761, 'TableCell-TheArmoryClub.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Pilsner Inn', 'Gay Pub and sports bar with a garden patio', '225 Church St', '(415) 621-7058', '1 PM - 2 AM', 'http://www.pilsnerinn.com/', '', 'https://www.facebook.com/pages/Pilsner-Inn/110907268932249', 'http://www.yelp.com/biz/pilsner-inn-san-francisco', 37.767116, -122.428722, 'TableCell-PilsnerInn.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Churchills', 'Cool, comfy spot for seasonal cocktails', '198 Church St', '((415) 570-9198', '4 PM - 2 AM', 'http://www.churchillsf.com/', '',  'https://www.facebook.com/Churchillsf', 'http://www.yelp.com/biz/churchill-san-francisco-3', 37.767898, -122.429199, 'TableCell-Churchill.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Sugar Lounge', 'Intimate lounge with sweet specialty drinks & free happy-hour snacks in a sleek space with sofas', '377 Hayes Street', '(415) 255-7144', '4 PM - 2 AM', 'http://sugarloungesf.com', 'http://sugarloungesf.com/calendar/', 'https://www.facebook.com/SugarLoungeSF?ref=br_tf', 'http://www.yelp.com/biz/sugar-lounge-san-francisco', 37.776854, -122.422521, 'TableCell-SugarLounge.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Brass Tacks', 'Laid-back, yet stylish bar pours cocktails, wines on tap & craft beers under snazzy light fixtures. Laid-back, yet stylish bar pours cocktails, wines on tap & craft beers under snazzy light fixtures.', '488 Hayes Street', 'PHONENUMBER', '2 PM - 2 AM', 'http://brasstackssf.com/', '', 'https://www.facebook.com/brasstackswines/timeline', 'http://www.yelp.com/biz/brass-tacks-san-francisco-2?osq=brasstrack', 37.776921, -122.424409, 'TableCell-BrassTracks.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTMISSION, 'Noir Lounge', 'Swanky wine bar & brewpub with a vintage Jazz-era vibe screens old films throughout', '581 Hayes Street', '(415) 431-6647', '3 PM - 1 AM', 'http://noir-sf.com', 'http://noir-sf.com/#!calendar/', 'https://www.facebook.com/NoirLoungeSF', 'http://www.yelp.com/biz/noir-lounge-san-francisco', 37.776418, -122.425914, 'TableCell-NoirLounge.png')
 
 
 -- SoMa 
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTSOMA, 'DNA Lounge', 'Multilevel SoMa nightclub', '375 11TH Street', '(415) 626-1409', 'Open 24 Hours', 'http://www.dnalounge.com', 'http://www.dnalounge.com/calendar/2015/01.html', 'https://www.facebook.com/dnalounge?ref=br_tf', 'http://www.yelp.com/biz/dna-lounge-san-francisco', 37.771075, -122.412686, 'TableCell-DNALounge.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTSOMA, 'Beatbox', 'Venue for live music & more in a loftlike warehouse space with exposed brick & a wood dance floor', '314 11th Street', '(415) 500-2675', ' PM - AM', 'http://beatboxsf.com', 'http://beatboxsf.com/events/', 'https://www.facebook.com/BeatBoxSF', 'http://www.yelp.com/biz/beatbox-san-francisco', 37.771506, -122.413926, 'TableCell-BeatBox.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTSOMA, 'Slim''s', 'Musician-owned live music club', '333 11TH Street', '(415) 255-0333', ' 5 PM - 2 AM', 'http://www.slimspresents.com/', 'http://www.slimspresents.com/calendar/', 'https://www.facebook.com/slimssf/info?tab=overview', 'http://www.yelp.com/biz/slims-san-francisco-2', 37.771520, -122.413250, 'TableCell-SLIMS.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTSOMA, 'Audio Nightclub', 'Funky ''70s style informs this club with 2 bars, a sunken dance floor & cutting-edge light & sound', '316 11th Street', '(415) 481-0556', ' 9-30 PM - 2 AM', 'http://www.audiosf.com/', 'http://www.audiosf.com/events/', 'https://www.facebook.com/audiosf/info?tab=overview', 'http://www.yelp.com/biz/audio-san-francisco?osq=audio+sf', 37.771425, -122.413750, 'TableCell-Audio.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTSOMA, 'The Stud', 'In business since 1966, this cash-only gay bar hosts events like drag shows, karaoke & more.', '399 9th Street', '(415) 863-6623', '5 PM - 2 AM', 'http://www.studsf.com/', '', 'https://www.facebook.com/pages/STUDSF/210440576816?rf=198418283535621', 'http://www.yelp.com/biz/the-stud-san-francisco', 37.772842, -122.409960, 'TableCell-TheStud.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTSOMA, 'DNA Lounge', 'Multilevel SoMa nightclub', '375 11TH Street', '(415) 626-1409', 'Open 24 Hours', 'http://www.dnalounge.com', 'http://www.dnalounge.com/calendar/2015/01.html', 'https://www.facebook.com/dnalounge?ref=br_tf', 'http://www.yelp.com/biz/dna-lounge-san-francisco', 37.771075, -122.412686, 'TableCell-DNALounge.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTSOMA, 'Beatbox', 'Venue for live music & more in a loftlike warehouse space with exposed brick & a wood dance floor', '314 11th Street', '(415) 500-2675', ' PM - AM', 'http://beatboxsf.com', 'http://beatboxsf.com/events/', 'https://www.facebook.com/BeatBoxSF', 'http://www.yelp.com/biz/beatbox-san-francisco', 37.771506, -122.413926, 'TableCell-BeatBox.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTSOMA, 'Slim''s', 'Musician-owned live music club', '333 11TH Street', '(415) 255-0333', ' 5 PM - 2 AM', 'http://www.slimspresents.com/', 'http://www.slimspresents.com/calendar/', 'https://www.facebook.com/slimssf/info?tab=overview', 'http://www.yelp.com/biz/slims-san-francisco-2', 37.771520, -122.413250, 'TableCell-SLIMS.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTSOMA, 'Audio Nightclub', 'Funky ''70s style informs this club with 2 bars, a sunken dance floor & cutting-edge light & sound', '316 11th Street', '(415) 481-0556', ' 9-30 PM - 2 AM', 'http://www.audiosf.com/', 'http://www.audiosf.com/events/', 'https://www.facebook.com/audiosf/info?tab=overview', 'http://www.yelp.com/biz/audio-san-francisco?osq=audio+sf', 37.771425, -122.413750, 'TableCell-Audio.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTSOMA, 'The Stud', 'In business since 1966, this cash-only gay bar hosts events like drag shows, karaoke & more.', '399 9th Street', '(415) 863-6623', '5 PM - 2 AM', 'http://www.studsf.com/', '', 'https://www.facebook.com/pages/STUDSF/210440576816?rf=198418283535621', 'http://www.yelp.com/biz/the-stud-san-francisco', 37.772842, -122.409960, 'TableCell-TheStud.png')
 
 
 -- Financial District
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTFINANCIAL, 'Local Edition', 'An extensive cocktail menu is offered at this underground lounge with a vintage newspaper theme.', '691 Market Street', '(415) 795-1375', '5 PM - 2 AM', 'http://localeditionsf.com/?special=1', '', 'https://www.facebook.com/localeditionsf', 'http://www.yelp.com/biz/local-edition-san-francisco', 37.787621, -122.402910, 'TableCell-LocalEdition.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTFINANCIAL, 'Press Club', 'Stylish underground wine bar', '20 Yerba Buena Lane', '(415) 744-5000', '2 PM - 2 AM', 'http://www.pressclubsf.com', 'http://www.pressclubsf.com/events', 'https://www.facebook.com/PressClubSF', 'http://www.yelp.com/biz/press-club-san-francisco', 37.785984, -122.404503, 'TableCell-PressClub.png')
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTFINANCIAL, 'Sutter Station Tavern', 'Low-key fixture for drinks & pub grub', '554 Market Street', '(415) 434-4768', '7 AM - 2 AM', 'http://www.upcidersf.com/', 'http://www.upcidersf.com/private_events.php', 'https://www.facebook.com/pages/Sutter-Station-Tavern-Cocktail-Lounge/108891659145000', 'http://www.yelp.com/biz/sutter-station-san-francisco?osq=sutter+station+tavern', 37.789989, -122.400916, 'TableCell-SutterStationTavern.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTFINANCIAL, 'Local Edition', 'An extensive cocktail menu is offered at this underground lounge with a vintage newspaper theme.', '691 Market Street', '(415) 795-1375', '5 PM - 2 AM', 'http://localeditionsf.com/?special=1', '', 'https://www.facebook.com/localeditionsf', 'http://www.yelp.com/biz/local-edition-san-francisco', 37.787621, -122.402910, 'TableCell-LocalEdition.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTFINANCIAL, 'Press Club', 'Stylish underground wine bar', '20 Yerba Buena Lane', '(415) 744-5000', '2 PM - 2 AM', 'http://www.pressclubsf.com', 'http://www.pressclubsf.com/events', 'https://www.facebook.com/PressClubSF', 'http://www.yelp.com/biz/press-club-san-francisco', 37.785984, -122.404503, 'TableCell-PressClub.png')
+
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTFINANCIAL, 'Sutter Station Tavern', 'Low-key fixture for drinks & pub grub', '554 Market Street', '(415) 434-4768', '7 AM - 2 AM', 'http://www.upcidersf.com/', 'http://www.upcidersf.com/private_events.php', 'https://www.facebook.com/pages/Sutter-Station-Tavern-Cocktail-Lounge/108891659145000', 'http://www.yelp.com/biz/sutter-station-san-francisco?osq=sutter+station+tavern', 37.789989, -122.400916, 'TableCell-SutterStationTavern.png')
 
 -- Tenderloin
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTTENDERLOIN, 'Ruby Skye', 'Theater-cum-club draws world-famous DJs & crowds ready to dance & fist-pump into the AM', '420 Mason Street', '(415) 693-0777', '9 PM - 4 AM', 'http://www.rubyskye.com/', 'http://www.rubyskye.com/_events.html', 'https://www.facebook.com/RUBYSKYESF', 'http://www.yelp.com/biz/ruby-skye-san-francisco', 37.787558, -122.409637, 'TableCell-RubySkye.png')
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTTENDERLOIN, 'Ruby Skye', 'Theater-cum-club draws world-famous DJs & crowds ready to dance & fist-pump into the AM', '420 Mason Street', '(415) 693-0777', '9 PM - 4 AM', 'http://www.rubyskye.com/', 'http://www.rubyskye.com/_events.html', 'https://www.facebook.com/RUBYSKYESF', 'http://www.yelp.com/biz/ruby-skye-san-francisco', 37.787558, -122.409637, 'TableCell-RubySkye.png')
 
 -- Richmond District
-SET @BARID = @BARID + 1
-INSERT INTO Bar (BarId, DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
-	VALUES ( @BARID, @DISTRICTRICHMOND, 'Boom Boom Room', 'Revelers pack this veteran club''s dance floor for live funk, jazz & blues sets by top musicians.', '1601 Fillmore Street', '(415) 673-8000', '4 PM - 12 AM', 'http://www.boomboomblues.com/', '', 'https://www.facebook.com/BoomBoomRoomSF', 'http://www.yelp.com/biz/boom-boom-room-san-francisco', 37.784648, -122.433170, 'TableCell-BoomBoomRoom.png')
-
-
-SET IDENTITY_INSERT SFBars.dbo.Bar OFF
-
+INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
+	VALUES (@DISTRICTRICHMOND, 'Boom Boom Room', 'Revelers pack this veteran club''s dance floor for live funk, jazz & blues sets by top musicians.', '1601 Fillmore Street', '(415) 673-8000', '4 PM - 12 AM', 'http://www.boomboomblues.com/', '', 'https://www.facebook.com/BoomBoomRoomSF', 'http://www.yelp.com/biz/boom-boom-room-san-francisco', 37.784648, -122.433170, 'TableCell-BoomBoomRoom.png')
 
 
 INSERT INTO TopList ([Rank], BarId) 
@@ -438,6 +413,11 @@ WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
  'The Royal Cuckoo')
 )
 
-
+INSERT INTO [Party](Name, BarId)
+	VALUES ('Darkroom', (SELECT BarId FROM Bar WHERE Name = 'The Stud')) 
+INSERT INTO [Party](Name, BarId)
+	VALUES ('Swagger Like Us', (SELECT BarId FROM Bar WHERE Name = 'El Rio')) 
+INSERT INTO [Party](Name)
+	VALUES ('Ships in the Night') 
 
 GO

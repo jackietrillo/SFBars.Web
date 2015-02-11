@@ -29,7 +29,6 @@ namespace SFBars.Core.Domain
 		public string ImageUrl { get; set; }
 
 		public virtual District District { get; set; }
-		public virtual Street Street { get; set; }
 
 		public virtual ICollection<BarTypeBar> BarTypes { get; set; }
 	}

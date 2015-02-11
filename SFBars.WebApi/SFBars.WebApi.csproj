@@ -85,7 +85,6 @@
     <Compile Include="Controllers\BarController.cs" />
     <Compile Include="Controllers\BarTypeController.cs" />
     <Compile Include="Controllers\DistrictController.cs" />
-    <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarTypeModel.cs" />
     <Compile Include="Models\DistrictModel.cs" />

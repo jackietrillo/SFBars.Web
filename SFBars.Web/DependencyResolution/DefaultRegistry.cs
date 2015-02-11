@@ -17,8 +17,8 @@
 
 namespace SFBars.DependencyResolution {
 	using SFBars.Core;
-	using SFBars.Core.Domain;
 	using SFBars.Data;
+	using SFBars.Core.Domain;
 	using StructureMap.Configuration.DSL;
 	using StructureMap.Graph;
 	
@@ -35,7 +35,7 @@ namespace SFBars.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-			For<IRepository<Street>>().Use<Repository<Street>>();
+		
 			For<IRepository<Bar>>().Use<Repository<Bar>>();
 			For<IRepository<BarType>>().Use<Repository<BarType>>();
 			For<IRepository<District>>().Use<Repository<District>>();

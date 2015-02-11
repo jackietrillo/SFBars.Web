@@ -1,7 +1,7 @@
 /*
 	SFBars Install Script
 	Author: Jackie Trillo
-	Created Date: 01/17/2015	
+	Created Date: 01/17/2015		
 */
 
 USE [SFBars]
@@ -197,31 +197,13 @@ BEGIN
 	DROP TABLE [Music]
 END 
 
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[UserProfile]') AND type in (N'U'))
-BEGIN
-	DROP TABLE UserProfile
-END
-
-CREATE TABLE [dbo].[UserProfile](
-	[UserId] [int] IDENTITY(1,1) NOT NULL,
-	[UserName] [nvarchar](56) NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[UserId] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
-(
-	[UserName] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
 -- Create District Table
 CREATE TABLE [dbo].[District](
 	[DistrictId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](100) NULL,	
 	[LastUpdate] [datetime] NULL,
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_District_LastUserId DEFAULT 1000, 
-	[CreateDate] [datetime] CONSTRAINT DF_District_CreateDate DEFAULT GetDate(), 
+	[CreateDate] [datetime] CONSTRAINT DF_District_CreateDate DEFAULT GetUtcDate(), 
 	[StatusFlag] [int]  CONSTRAINT DF_District_StatusFlag DEFAULT 1
  CONSTRAINT [PK_District] PRIMARY KEY CLUSTERED 
 (
@@ -243,7 +225,7 @@ CREATE TABLE [dbo].[Street](
 	[Longitude] [decimal](9, 6) NULL,
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Street_LastUserId DEFAULT 1000,
 	[LastUpdate] [datetime] NULL, 
-	[CreateDate] [datetime] CONSTRAINT DF_Street_CreateDate DEFAULT GetDate(), 
+	[CreateDate] [datetime] CONSTRAINT DF_Street_CreateDate DEFAULT GetUtcDate(), 
 	[StatusFlag] [int]  CONSTRAINT DF_Street_StatusFlag DEFAULT 1
  CONSTRAINT [PK_Street] PRIMARY KEY CLUSTERED 
 (
@@ -260,7 +242,7 @@ CREATE TABLE [dbo].[BarType](
 	[Name] [nvarchar](100) NULL,	
 	[LastUpdate] [datetime] NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_BarType_LastUserId DEFAULT 1000,
-	[CreateDate] [datetime] CONSTRAINT DF_BarType_CreateDate DEFAULT GetDate(),	 
+	[CreateDate] [datetime] CONSTRAINT DF_BarType_CreateDate DEFAULT GetUtcDate(),	 
 	[StatusFlag] [int]  CONSTRAINT DF_BarType_StatusFlag DEFAULT 1
  CONSTRAINT [PK_BarType] PRIMARY KEY CLUSTERED 
 (
@@ -278,7 +260,7 @@ CREATE TABLE [dbo].[Music](
 	[Name] [nvarchar](100) NOT NULL,
 	[LastUpdate] [datetime] NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Music_LastUserId DEFAULT 1000,
-	[CreateDate] [datetime] CONSTRAINT DF_Music_CreateDate DEFAULT GetDate(), 
+	[CreateDate] [datetime] CONSTRAINT DF_Music_CreateDate DEFAULT GetUtcDate(), 
 	[StatusFlag] [int]  CONSTRAINT DF_Music_StatusFlag DEFAULT 1
  CONSTRAINT [PK_Music] PRIMARY KEY CLUSTERED 
 (
@@ -310,7 +292,7 @@ CREATE TABLE [dbo].[Bar](
 	[YelpUrl] [varchar](max) NULL,
 	[LastUpdate] [datetime] NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Bar_LastUserId DEFAULT 1000,
-	[CreateDate] [datetime] CONSTRAINT DF_Bar_CreateDate DEFAULT GetDate(), 
+	[CreateDate] [datetime] CONSTRAINT DF_Bar_CreateDate DEFAULT GetUtcDate(), 
 	[StatusFlag] [int]  CONSTRAINT DF_Bar_StatusFlag DEFAULT 1
  CONSTRAINT [PK_Bar] PRIMARY KEY CLUSTERED 
 (
@@ -358,13 +340,13 @@ ALTER TABLE [dbo].[TopList]  WITH CHECK ADD  CONSTRAINT [FK_TopList_Bar] FOREIGN
 
 -- Create Party Table
 CREATE TABLE [dbo].[Party](
-	[PartyId] [int] NOT NULL,
+	[PartyId] [int]  IDENTITY(1,1) NOT NULL,
 	[BarId] [int] NULL,
 	[Name] [nvarchar](100) NOT NULL,
 	[Address] [nvarchar](150) NULL,
 	[LastUpdate] DATETIME NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Party_LastUserId DEFAULT 1000,
-	[CreateDate] DATETIME CONSTRAINT DF_Party_CreateDate DEFAULT GetDate(), 
+	[CreateDate] DATETIME CONSTRAINT DF_Party_CreateDate DEFAULT GetUtcDate(), 
 	[StatusFlag] [int]  CONSTRAINT DF_Party_StatusFlag DEFAULT 1
  CONSTRAINT [PK_Party] PRIMARY KEY CLUSTERED 
 (
@@ -385,7 +367,7 @@ CREATE TABLE [dbo].[Event](
 	[Address] [nvarchar](150) NULL,
 	[LastUpdate] DATETIME NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Event_LastUserId DEFAULT 1000,
-	[CreateDate] DATETIME CONSTRAINT DF_Event_CreateDate DEFAULT GetDate(), 	
+	[CreateDate] DATETIME CONSTRAINT DF_Event_CreateDate DEFAULT GetUtcDate(), 	
 	[StatusFlag] [int]  CONSTRAINT DF_Event_StatusFlag DEFAULT 1
 ) ON [PRIMARY]
 

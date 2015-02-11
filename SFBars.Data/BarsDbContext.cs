@@ -8,17 +8,16 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace SFBars.Data
 {
-	public class SFBarsDbContext : DbContext, ISFBarsDbContext
+	public class BarsDbContext : DbContext, IBarsDbContext
 	{
 		public static string connectionString;
 
-		public SFBarsDbContext()
-			: base("SFBarsConnection")
+		public BarsDbContext()
+			: base("DefaultConnection")
 		{
 		}
-
-		public virtual DbSet<Street> SFStreets { get; set; }
-		public virtual DbSet<Bar> SFBars { get; set; }
+		
+		public virtual DbSet<Bar> Bars { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

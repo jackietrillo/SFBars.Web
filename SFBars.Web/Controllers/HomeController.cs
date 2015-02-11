@@ -9,11 +9,11 @@ namespace SFBars.Controllers
 {
 	public class HomeController : Controller
 	{
-		private IStreetService _SfStreetService;
+		private IBarService _barService;
 
-		public HomeController(IStreetService sfStreetService)
+		public HomeController(IBarService barService)
 		{
-			_SfStreetService = sfStreetService;
+			_barService = barService;
 		}
 
 		public ActionResult Index()

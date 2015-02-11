@@ -49,15 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISFBarsDbContext.cs" />
+    <Compile Include="IBarsDbContext.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Mappings\BarMap.cs" />
     <Compile Include="Mappings\BarTypeBarMap.cs" />
     <Compile Include="Mappings\BarTypeMap.cs" />
     <Compile Include="Mappings\DistrictMap.cs" />
-    <Compile Include="Mappings\StreetMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="SFBarsDbContext.cs" />
+    <Compile Include="BarsDbContext.cs" />
+    <Compile Include="Repository.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
