@@ -6,11 +6,12 @@ using System.Net.Http;
 using System.Web.Http;
 using Bars.Api.Models;
 using Bars.Core.Domain;
+using Bars.Services;
 
 namespace Bars.Api.Controllers
 {
     public class BaseController : ApiController
-    {	
+    {
 		protected BarModel MapBarToBarModel(Bar bar)
 		{
 			return new BarModel

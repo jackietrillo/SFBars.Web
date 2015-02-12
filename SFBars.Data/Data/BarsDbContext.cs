@@ -5,6 +5,7 @@ using System.Data.Entity;
 using Bars.Core.Domain;
 using System.Reflection;
 using System.Data.Entity.ModelConfiguration;
+using Bars.Data.Mapping;
 
 namespace Bars.Data
 {
@@ -20,8 +21,8 @@ namespace Bars.Data
 		public virtual DbSet<Bar> Bars { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			//Mappings		
+		{			 
+			//TODO: remove reflection - performance hit		
 			var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
 					 .Where(type => !String.IsNullOrEmpty(type.Namespace))
 					 .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));

@@ -328,10 +328,6 @@
       <Project>{f8e0111e-77f4-4b3f-bb29-de7584baa5e2}</Project>
       <Name>SFBars.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SFBars.Data\SFBars.Data.csproj">
-      <Project>{26a9bdba-5810-4d06-ae88-2e706639bd5e}</Project>
-      <Name>SFBars.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SFBars.Services\SFBars.Services.csproj">
       <Project>{6d5e556a-0e65-4406-9cf8-ac916dfe20b6}</Project>
       <Name>SFBars.Services</Name>

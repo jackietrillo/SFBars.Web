@@ -9,12 +9,13 @@ namespace Bars.Controllers
 {
 	public class HomeController : Controller
 	{
-		private IBarService _barService;
+		private IServiceFacade _service;
 
-		public HomeController(IBarService barService)
+		public HomeController(IServiceFacade barService)
 		{
-			_barService = barService;
+			_service = barService;		
 		}
+
 
 		public ActionResult Index()
 		{

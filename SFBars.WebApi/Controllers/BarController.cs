@@ -4,17 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Bars.Services;
 using Bars.Api.Models;
 using Bars.Core.Domain;
+using Bars.Services;
 
 namespace Bars.Api.Controllers
 {
 	public class BarController : BaseController
 	{
-		private IBarService _service;
+		private IServiceFacade _service;
 
-		public BarController(IBarService barService)
+		public BarController(IServiceFacade barService)
 		{
 			_service = barService;		
 		}
@@ -31,13 +31,6 @@ namespace Bars.Api.Controllers
 			}
 
 			return barModels;
-		}
-
-		public BarModel Get(int barId)
-		{
-			Bar bar = _service.GetBarById(barId);
-
-			return this.MapBarToBarModel(bar);
 		}
 	}
 }

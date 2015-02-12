@@ -12,19 +12,17 @@ using Bars.WebApi.Models;
 namespace Bars.Api.Controllers
 {
 	public class BarTypeController : BaseController
-	{
-		private IBarTypeService _service;
-		private IBarService _barService;		
+	{		
+		private IServiceFacade _serviceFacade;
 
-		public BarTypeController(IBarTypeService service, IBarService barService)
+		public BarTypeController(IServiceFacade service)
 		{
-			_service = service;
-			_barService = barService;
+			_serviceFacade = service;
 		}
 
 		public List<BarTypeModel> Get()
 		{
-			IList<BarType> barTypes = _service.GetAllBarTypes();
+			IList<BarType> barTypes = _serviceFacade.GetAllBarTypes();
 
 			List<BarTypeModel> barTypeModels = new List<BarTypeModel>();
 			BarTypeModel barTypeModel;
@@ -40,17 +38,6 @@ namespace Bars.Api.Controllers
 
 			return barTypeModels;			
 		}
-
-		public List<BarModel> Get(int id)
-		{
-			IList<Bar> bars = _barService.GetBarsByBarType(id);			
-			List<BarModel> barModels = new List<BarModel>();		
-			foreach(Bar bar in bars)
-			{
-				barModels.Add(this.MapBarToBarModel(bar));
-			}
-			return barModels;
-		}	
 	}
 }
 

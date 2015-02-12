@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Bars.Services;
 
 namespace Bars
 {
@@ -17,6 +18,8 @@ namespace Bars
 
 	public class MvcApplication : System.Web.HttpApplication
 	{
+		internal ServiceFacade ServiceFacade { get; private set; }
+
 		protected void Application_Start()
 		{				
 			AreaRegistration.RegisterAllAreas();
@@ -26,6 +29,17 @@ namespace Bars
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AuthConfig.RegisterAuth();
 					
+		}
+
+		public override void Init()
+		{
+			base.Init();
+			ServiceFacade = new ServiceFacade();
+		}
+
+		protected void Application_End(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

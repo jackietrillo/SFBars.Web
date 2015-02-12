@@ -11,48 +11,34 @@ using Bars.WebApi.Models;
 
 namespace Bars.Api.Controllers
 {
-	public class DistrictController : BaseController
+	public class EventController : BaseController
 	{
-		private IDistrictService _service;
-		private IBarService _barService;
+		private IServiceFacade _service;
 
-		public DistrictController(IDistrictService service, IBarService barService)
+		public EventController(IServiceFacade barService)
 		{
-			_service = service;
-			_barService = barService;		
+			_service = barService;		
 		}
 
-		public List<DistrictModel> Get()
+		public List<EventModel> Get()
 		{
-			IList<District> districts = _service.GetAllDistricts();
+			IList<Event> Events = _service.GetAllEvents();
 
-			List<DistrictModel> districtModels = new List<DistrictModel>();
-			DistrictModel districtModel;
+			List<EventModel> EventModels = new List<EventModel>();
+			EventModel EventModel;
 
-			foreach (District district in districts)
+			foreach (Event Event in Events)
 			{
-				districtModel = new DistrictModel
+				EventModel = new EventModel
 				{
-					DistrictId = district.DistrictId,
-					Name = district.Name,
+					EventId = Event.EventId,
+					Name = Event.Name,
 				};
 
-				districtModels.Add(districtModel);
+				EventModels.Add(EventModel);
 			}
 
-			return districtModels;			
-		}
-
-		public List<BarModel> Get(int id)
-		{
-			IList<Bar> bars = _barService.GetBarsByDistrict(id);
-
-			List<BarModel> barModels = new List<BarModel>();
-			foreach (Bar bar in bars)
-			{
-				barModels.Add(this.MapBarToBarModel(bar));
-			}
-			return barModels;
+			return EventModels;			
 		}
 	}
 }

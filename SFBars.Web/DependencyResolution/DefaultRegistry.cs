@@ -17,7 +17,7 @@
 
 namespace Bars.DependencyResolution {
 	using Bars.Core;
-	using Bars.Data;
+	using Bars.Services;
 	using Bars.Core.Domain;
 	using StructureMap.Configuration.DSL;
 	using StructureMap.Graph;
@@ -28,17 +28,16 @@ namespace Bars.DependencyResolution {
         public DefaultRegistry() {
             Scan(
                 scan => {                   
-					scan.Assembly("SFBars.Core");
-					scan.Assembly("SFBars.Data");
-					scan.Assembly("SFBars.Services");					
+					//scan.Assembly("SFBars.Core");
+					//scan.Assembly("SFBars.Data");
+					//scan.Assembly("SFBars.Services");					
 					scan.TheCallingAssembly();					
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
 		
-			For<IRepository<Bar>>().Use<Repository<Bar>>();
-			For<IRepository<BarType>>().Use<Repository<BarType>>();
-			For<IRepository<District>>().Use<Repository<District>>();
+			For<IServiceFacade>().Use<ServiceFacade>();
+		
         }
 
        
