@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Services
+namespace Bars.Services
 {
 	public interface IBarTypeService
 	{
-		IQueryable<BarType> GetAllBarTypes();
+		IList<BarType> GetAllBarTypes();
 	}
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SFBars.Api.Models;
+using Bars.Api.Models;
 
-namespace SFBars.WebApi.Models
+namespace Bars.WebApi.Models
 {
 	public class BarTypeModel
 	{

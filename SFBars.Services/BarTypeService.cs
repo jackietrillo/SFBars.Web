@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SFBars.Core;
-using SFBars.Core.Domain;
+using Bars.Core;
+using Bars.Core.Domain;
 
-namespace SFBars.Services
+namespace Bars.Services
 {
 	public class BarTypeService : IBarTypeService
 	{	
@@ -17,9 +17,9 @@ namespace SFBars.Services
 			_repository = repository;
 		}
 
-		public IQueryable<BarType> GetAllBarTypes()
+		public IList<BarType> GetAllBarTypes()
 		{
-			return _repository.Table.AsQueryable().OrderBy(b => b.Name);
+			return _repository.Table.AsQueryable().OrderBy(b => b.Name).ToList();
 		}
 	}
 }

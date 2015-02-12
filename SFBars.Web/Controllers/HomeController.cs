@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SFBars.Services;
+using Bars.Services;
 
-namespace SFBars.Controllers
+namespace Bars.Controllers
 {
 	public class HomeController : Controller
 	{

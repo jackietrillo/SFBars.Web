@@ -3,11 +3,11 @@ using Bars.Core.Domain;
 
 namespace Bars.Data.Mappings
 {
-	public partial class BarTypeMap : EntityTypeConfiguration<BarType>
+	public partial class EventMap : EntityTypeConfiguration<Event>
 	{
-		public BarTypeMap()
+		public EventMap()
 		{
-			this.ToTable("BarType");
+			this.ToTable("Event");
 		}
 	}
 }

@@ -1,19 +1,18 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Data.Mapping
+namespace Bars.Data.Mapping
 {
 	public partial class BarMap : EntityTypeConfiguration<Bar>
 	{
 		public BarMap()
 		{
 			this.ToTable("Bar");
-
-			/*
-			this.HasOptional(b => b.Street)
+			
+			this.HasOptional(m => m.MusicType)
 						 .WithMany(s => s.Bars)
-						 .HasForeignKey(b => b.StreetId);
-			*/
+						 .HasForeignKey(b => b.MusicTypeId);
+			
 			this.HasRequired(b => b.District)
 								 .WithMany(s => s.Bars)
 								 .HasForeignKey(b => b.DistrictId);

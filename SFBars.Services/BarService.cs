@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
-using SFBars.Core.Domain;
-using SFBars.Core;
-using SFBars.Data;
+using Bars.Core.Domain;
+using Bars.Core;
+using Bars.Data;
 
-namespace SFBars.Services
+namespace Bars.Services
 {
 	public class BarService : IBarService
 	{
@@ -22,24 +22,19 @@ namespace SFBars.Services
 			return _repository.Table.FirstOrDefault(b => b.BarId == barId);			
 		}
 
-		public IQueryable<Bar> GetAllBars()
+		public IList<Bar> GetAllBars()
 		{
-			return _repository.Table.AsQueryable().OrderBy(b => b.Name);
+			return _repository.Table.AsQueryable().OrderBy(b => b.Name).ToList();
 		}
 
-		public IQueryable<Bar> GetBarsByBarType(int barTypeId)
+		public IList<Bar> GetBarsByBarType(int barTypeId)
 		{
-			return _repository.Table.AsQueryable().Where(b => b.BarTypes.Any(bt => bt.BarTypeId == barTypeId));
+			return _repository.Table.AsQueryable().Where(b => b.BarTypes.Any(bt => bt.BarTypeId == barTypeId)).ToList();
 		}
 
-		public IQueryable<Bar> GetBarsByDistrict(int districtId)
+		public IList<Bar> GetBarsByDistrict(int districtId)
 		{
-			return _repository.Table.AsQueryable().Where(b => b.DistrictId == districtId).OrderBy(b => b.Name);
-		}
-
-		public IQueryable<Bar> GetBarsByStreet(int streetId)
-		{
-			return _repository.Table.AsQueryable().Where(b => b.StreetId == streetId).OrderBy(b => b.Name);
+			return _repository.Table.AsQueryable().Where(b => b.DistrictId == districtId).OrderBy(b => b.Name).ToList();
 		}
 
 	}

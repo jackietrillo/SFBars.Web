@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SFBars.Core.Domain
+namespace Bars.Core.Domain
 {
 	public class Bar : BaseEntity
 	{
@@ -12,9 +9,10 @@ namespace SFBars.Core.Domain
 		{
 			BarTypes = new List<BarTypeBar>();
 		}
+
 		public int BarId { get; set; }
 		public int DistrictId { get; set; }
-		public Nullable<int> StreetId { get; set; }
+		public int? MusicTypeId { get; set; }
 		public string Name { get; set; }
 		public string Descrip { get; set; }
 		public string Address { get; set; }
@@ -29,7 +27,7 @@ namespace SFBars.Core.Domain
 		public string ImageUrl { get; set; }
 
 		public virtual District District { get; set; }
-
+		public virtual MusicType MusicType { get; set; }
 		public virtual ICollection<BarTypeBar> BarTypes { get; set; }
 	}
 }

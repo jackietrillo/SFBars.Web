@@ -15,7 +15,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SFBars.DependencyResolution {
+namespace Bars.DependencyResolution
+{
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;

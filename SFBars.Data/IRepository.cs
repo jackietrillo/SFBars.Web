@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Core
+namespace Bars.Core
 {
 	/// <summary>
 	/// Repository

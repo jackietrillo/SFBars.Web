@@ -121,9 +121,9 @@ BEGIN
 	ALTER TABLE [dbo].[Bar]  DROP CONSTRAINT [FK_Bar_Street] 
 END
 
-IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Bar_Music]') AND parent_object_id = OBJECT_ID(N'[dbo].[Bar]'))
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Bar_MusicType]') AND parent_object_id = OBJECT_ID(N'[dbo].[Bar]'))
 BEGIN
-	ALTER TABLE [dbo].[Bar]  DROP CONSTRAINT [FK_Bar_Music] 
+	ALTER TABLE [dbo].[Bar]  DROP CONSTRAINT [FK_Bar_MusicType] 
 END
 
 IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Bar_User]') AND parent_object_id = OBJECT_ID(N'[dbo].[Bar]'))
@@ -170,31 +170,31 @@ BEGIN
 	DROP TABLE [BarType]
 END 
 
--- Drop Music constraint
+-- Drop MusicType constraint
 IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Bar_User]') AND parent_object_id = OBJECT_ID(N'[dbo].[Bar]'))
 BEGIN
-	ALTER TABLE [dbo].[Music] DROP CONSTRAINT [FK_Bar_User] 
+	ALTER TABLE [dbo].[MusicType] DROP CONSTRAINT [FK_Bar_User] 
 END 
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_Music_StatusFlag]') AND parent_object_id = OBJECT_ID(N'[dbo].[Music]'))
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_MusicType_StatusFlag]') AND parent_object_id = OBJECT_ID(N'[dbo].[MusicType]'))
 BEGIN
-	ALTER TABLE [dbo].[Music]  DROP CONSTRAINT [DF_Music_StatusFlag] 
+	ALTER TABLE [dbo].[MusicType]  DROP CONSTRAINT [DF_MusicType_StatusFlag] 
 END
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_Music_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[Music]'))
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_MusicType_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[MusicType]'))
 BEGIN
-	ALTER TABLE [dbo].[Music]  DROP CONSTRAINT [DF_Music_CreateDate] 
+	ALTER TABLE [dbo].[MusicType]  DROP CONSTRAINT [DF_MusicType_CreateDate] 
 END
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_Music_LastUserId]') AND parent_object_id = OBJECT_ID(N'[dbo].[Music]'))
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_MusicType_LastUserId]') AND parent_object_id = OBJECT_ID(N'[dbo].[MusicType]'))
 BEGIN
-	ALTER TABLE [dbo].[Music]  DROP CONSTRAINT [DF_Music_LastUserId] 
+	ALTER TABLE [dbo].[MusicType]  DROP CONSTRAINT [DF_MusicType_LastUserId] 
 END
 
--- Drop Music
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Music]') AND type in (N'U'))
+-- Drop MusicType
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MusicType]') AND type in (N'U'))
 BEGIN
-	DROP TABLE [Music]
+	DROP TABLE [MusicType]
 END 
 
 -- Create District Table
@@ -214,28 +214,6 @@ CREATE TABLE [dbo].[District](
 -- Add District Table Constraints
 ALTER TABLE [dbo].[District]  WITH CHECK ADD  CONSTRAINT [FK_District_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
 
-
--- Create Street Table
-CREATE TABLE [dbo].[Street](
-	[StreetId] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Descrip] [nvarchar](max) NULL,
-	[ImageUrl] [varchar](500) NULL,
-	[Latitude] [decimal](9, 6) NULL,
-	[Longitude] [decimal](9, 6) NULL,
-	[LastUserId] [int] NOT NULL CONSTRAINT DF_Street_LastUserId DEFAULT 1000,
-	[LastUpdate] [datetime] NULL, 
-	[CreateDate] [datetime] CONSTRAINT DF_Street_CreateDate DEFAULT GetUtcDate(), 
-	[StatusFlag] [int]  CONSTRAINT DF_Street_StatusFlag DEFAULT 1
- CONSTRAINT [PK_Street] PRIMARY KEY CLUSTERED 
-(
-	[StreetId] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
--- Add Street Table Constraints
-ALTER TABLE [dbo].[Street]  WITH CHECK ADD  CONSTRAINT [FK_Street_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
-
 -- Create BarType Table
 CREATE TABLE [dbo].[BarType](
 	[BarTypeId] [int] IDENTITY(1,1) NOT NULL,
@@ -254,30 +232,29 @@ CREATE TABLE [dbo].[BarType](
 ALTER TABLE [dbo].[BarType]  WITH CHECK ADD  CONSTRAINT [FK_BarType_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
 
 
--- Create Music Table
-CREATE TABLE [dbo].[Music](
-	[MusicId] [int] IDENTITY(1,1) NOT NULL,
+-- Create MusicType Table
+CREATE TABLE [dbo].[MusicType](
+	[MusicTypeId] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](100) NOT NULL,
 	[LastUpdate] [datetime] NULL, 
-	[LastUserId] [int] NOT NULL CONSTRAINT DF_Music_LastUserId DEFAULT 1000,
-	[CreateDate] [datetime] CONSTRAINT DF_Music_CreateDate DEFAULT GetUtcDate(), 
-	[StatusFlag] [int]  CONSTRAINT DF_Music_StatusFlag DEFAULT 1
- CONSTRAINT [PK_Music] PRIMARY KEY CLUSTERED 
+	[LastUserId] [int] NOT NULL CONSTRAINT DF_MusicType_LastUserId DEFAULT 1000,
+	[CreateDate] [datetime] CONSTRAINT DF_MusicType_CreateDate DEFAULT GetUtcDate(), 
+	[StatusFlag] [int]  CONSTRAINT DF_MusicType_StatusFlag DEFAULT 1
+ CONSTRAINT [PK_MusicType] PRIMARY KEY CLUSTERED 
 (
-	[MusicId] ASC
+	[MusicTypeId] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
--- Add Music Table Constraints
-ALTER TABLE [dbo].[Music]  WITH CHECK ADD  CONSTRAINT [FK_Music_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
+-- Add MusicType Table Constraints
+ALTER TABLE [dbo].[MusicType]  WITH CHECK ADD  CONSTRAINT [FK_MusicType_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
 
 
 -- Create Bar Table
 CREATE TABLE [dbo].[Bar](
-	[BarId] [int] IDENTITY(1,1) NOT NULL,
-	[StreetId] [int] NULL,
+	[BarId] [int] IDENTITY(1,1) NOT NULL,	
 	[DistrictId] [int] NOT NULL,
-	[MusicId] [int] NULL,
+	[MusicTypeId] [int] NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Descrip] [nvarchar](max) NULL,
 	[ImageUrl] [varchar](500) NULL,
@@ -302,8 +279,7 @@ CREATE TABLE [dbo].[Bar](
 
 -- Add Bar Table constraints
 ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_District] FOREIGN KEY([DistrictId])REFERENCES [dbo].[District] ([DistrictId])
-ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_Street] FOREIGN KEY([StreetId]) REFERENCES [dbo].[Street] ([StreetId])
-ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_Music] FOREIGN KEY([MusicId]) REFERENCES [dbo].[Music] ([MusicId])
+ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_MusicType] FOREIGN KEY([MusicTypeId]) REFERENCES [dbo].[MusicType] ([MusicTypeId])
 ALTER TABLE [dbo].[Bar]  WITH CHECK ADD  CONSTRAINT [FK_Bar_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
 
 

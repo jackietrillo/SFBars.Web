@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 using System.Reflection;
 using System.Data.Entity.ModelConfiguration;
 
-namespace SFBars.Data
+namespace Bars.Data
 {
 	public class BarsDbContext : DbContext, IBarsDbContext
 	{

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SFBars.Core.Domain
+
+namespace Bars.Core.Domain
 {
 	public class BarType : BaseEntity
 	{
@@ -12,6 +10,7 @@ namespace SFBars.Core.Domain
 		{
 			Bars = new List<BarTypeBar>();
 		}
+
 		public int BarTypeId { get; set; }
 		public string Name { get; set; }
 

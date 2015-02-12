@@ -4,54 +4,41 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SFBars.Services;
-using SFBars.Api.Models;
-using SFBars.Core.Domain;
-using AutoMapper;
+using Bars.Services;
+using Bars.Api.Models;
+using Bars.Core.Domain;
 
-namespace SFBars.Api.Controllers
+namespace Bars.Api.Controllers
 {
-	public class BarController : ApiController
+	public class BarController : BaseController
 	{
 		private IBarService _service;
 
 		public BarController(IBarService barService)
 		{
-			_service = barService;
-
-			Mapper.CreateMap<Bar, BarModel>();
+			_service = barService;		
 		}
 
 		public List<BarModel> Get()
 		{
-			IQueryable<Bar> bars = _service.GetAllBars();
+			IList<Bar> bars = _service.GetAllBars();
+			List<BarModel> barModels = new List<BarModel>();
 
-			return Mapper.Map(bars, new List<BarModel>());
+			foreach (Bar bar in bars)
+			{
+				var barModel = this.MapBarToBarModel(bar);
+				barModels.Add(barModel);		
+			}
+
+			return barModels;
 		}
 
 		public BarModel Get(int barId)
 		{
 			Bar bar = _service.GetBarById(barId);
-			
-			return Mapper.Map(bar, new BarModel());
+
+			return this.MapBarToBarModel(bar);
 		}
-
-
-		// POST api/values
-		public void Post([FromBody]string value)
-		{
-		}
-
-		// PUT api/values/5
-		public void Put(int id, [FromBody]string value)
-		{
-		}
-
-		// DELETE api/values/5
-		public void Delete(int id)
-		{
-		}
-
 	}
 }
 

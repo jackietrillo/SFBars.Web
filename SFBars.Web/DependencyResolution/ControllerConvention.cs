@@ -15,7 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SFBars.DependencyResolution {
+namespace Bars.DependencyResolution {
     using System;
     using System.Web.Mvc;
 

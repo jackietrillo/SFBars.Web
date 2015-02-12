@@ -15,10 +15,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace SFBars.DependencyResolution {
-	using SFBars.Core;
-	using SFBars.Data;
-	using SFBars.Core.Domain;
+namespace Bars.DependencyResolution {
+	using Bars.Core;
+	using Bars.Data;
+	using Bars.Core.Domain;
 	using StructureMap.Configuration.DSL;
 	using StructureMap.Graph;
 	

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SFBars.Services;
-using SFBars.Api.Models;
-using SFBars.Core.Domain;
-using SFBars.WebApi.Models;
-using AutoMapper;
-namespace SFBars.Api.Controllers
+using Bars.Services;
+using Bars.Api.Models;
+using Bars.Core.Domain;
+using Bars.WebApi.Models;
+
+namespace Bars.Api.Controllers
 {
-	public class DistrictController : ApiController
+	public class DistrictController : BaseController
 	{
 		private IDistrictService _service;
 		private IBarService _barService;
@@ -19,24 +19,40 @@ namespace SFBars.Api.Controllers
 		public DistrictController(IDistrictService service, IBarService barService)
 		{
 			_service = service;
-			_barService = barService;
-
-			Mapper.CreateMap<District, DistrictModel>();
-			Mapper.CreateMap<Bar, BarModel>();
+			_barService = barService;		
 		}
 
 		public List<DistrictModel> Get()
 		{
-			IQueryable<District> districts = _service.GetAllDistricts();
+			IList<District> districts = _service.GetAllDistricts();
 
-			return Mapper.Map(districts, new List<DistrictModel>());
+			List<DistrictModel> districtModels = new List<DistrictModel>();
+			DistrictModel districtModel;
+
+			foreach (District district in districts)
+			{
+				districtModel = new DistrictModel
+				{
+					DistrictId = district.DistrictId,
+					Name = district.Name,
+				};
+
+				districtModels.Add(districtModel);
+			}
+
+			return districtModels;			
 		}
 
 		public List<BarModel> Get(int id)
 		{
-			IQueryable<Bar> bars = _barService.GetBarsByDistrict(id);
+			IList<Bar> bars = _barService.GetBarsByDistrict(id);
 
-			return Mapper.Map(bars, new List<BarModel>());
+			List<BarModel> barModels = new List<BarModel>();
+			foreach (Bar bar in bars)
+			{
+				barModels.Add(this.MapBarToBarModel(bar));
+			}
+			return barModels;
 		}
 	}
 }

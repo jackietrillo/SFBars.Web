@@ -1,7 +1,8 @@
-namespace SFBars.DependencyResolution {
+namespace Bars.DependencyResolution
+{
     using System.Web;
 
-    using SFBars.App_Start;
+	using Bars.App_Start;
 
     using StructureMap.Web.Pipeline;
 

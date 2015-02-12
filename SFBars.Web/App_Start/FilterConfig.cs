@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace SFBars
+namespace Bars
 {
 	public class FilterConfig
 	{

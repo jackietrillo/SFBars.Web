@@ -9,7 +9,7 @@ using AutoMapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace SFBars
+namespace Bars
 {
 	public static class WebApiConfig
 	{

@@ -6,10 +6,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using SFBars.Core;
-using SFBars.Core.Domain;
+using Bars.Core;
+using Bars.Core.Domain;
 
-namespace SFBars.Data
+namespace Bars.Data
 {
 /// <summary>
     /// Entity Framework repository

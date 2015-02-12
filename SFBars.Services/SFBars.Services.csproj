@@ -7,7 +7,7 @@
     <ProjectGuid>{6D5E556A-0E65-4406-9CF8-AC916DFE20B6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SFBars.Services</RootNamespace>
+    <RootNamespace>Bars.Services</RootNamespace>
     <AssemblyName>SFBars.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

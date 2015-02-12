@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
-using SFBars.Core.Domain;
-using SFBars.Core;
-using SFBars.Data;
+using Bars.Core.Domain;
+using Bars.Core;
+using Bars.Data;
 
-namespace SFBars.Services
+namespace Bars.Services
 {
 	public class DistrictService : IDistrictService
 	{
@@ -17,9 +17,9 @@ namespace SFBars.Services
 			_repository = repository;
 		}
 
-		public IQueryable<District> GetAllDistricts()
+		public IList<District> GetAllDistricts()
 		{
-			return _repository.Table.AsQueryable<District>().OrderBy(s => s.Name);
+			return _repository.Table.AsQueryable<District>().OrderBy(s => s.Name).ToList();
 		}
 
 		public District GetDistrictById(int districtId)

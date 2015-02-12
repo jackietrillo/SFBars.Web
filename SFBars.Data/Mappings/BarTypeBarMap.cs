@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Data.Mappings
+namespace Bars.Data.Mappings
 {
 
 	public partial class BarTypeBarMap : EntityTypeConfiguration<BarTypeBar>
@@ -9,7 +9,6 @@ namespace SFBars.Data.Mappings
 		public BarTypeBarMap()
 		{
 			this.ToTable("BarTypeBar");
-
 
 			this.HasRequired(b => b.Bar)
 								 .WithMany(s => s.BarTypes)

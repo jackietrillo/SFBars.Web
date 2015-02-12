@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Data
+namespace Bars.Data
 {
 	public interface IBarsDbContext
 	{

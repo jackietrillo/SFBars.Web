@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using SFBars.Core.Domain;
+using Bars.Core.Domain;
 
-namespace SFBars.Data.Mappings
+namespace Bars.Data.Mappings
 {
 	public partial class DistrictMap : EntityTypeConfiguration<District>
 	{

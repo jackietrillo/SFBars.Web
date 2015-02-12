@@ -8,10 +8,10 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using SFBars.Filters;
-using SFBars.Models;
+using Bars.Filters;
+using Bars.Models;
 
-namespace SFBars.Controllers
+namespace Bars.Controllers
 {
 	[Authorize]
 	[InitializeSimpleMembership]

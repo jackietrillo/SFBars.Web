@@ -16,7 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace SFBars.DependencyResolution {
+namespace Bars.DependencyResolution {
     using StructureMap;
 	
     public static class IoC {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SFBars.Api.Models
+namespace Bars.Api.Models
 {	
 	public class BarModel
 	{
-		public int BarId { get; set; }
-		public int DistrictId { get; set; }
-		public int? StreetId { get; set; }
+		   public int BarId { get; set; }
+		   public int DistrictId { get; set; }
+		  public int? MusicTypeId { get; set; }
 		public string Name { get; set; }
 		public string Descrip { get; set; }
 		public string Address { get; set; }

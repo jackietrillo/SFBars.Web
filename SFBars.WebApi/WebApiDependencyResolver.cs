@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Web.Http.Dependencies;
 using StructureMap;
 
-namespace SFBars.Api.DependencyResolution
+namespace Bars.Api.DependencyResolution
 {
 	public class WebApiDependencyResolver : IDependencyResolver
 	{

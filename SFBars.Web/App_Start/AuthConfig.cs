@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
-using SFBars.Models;
+using Bars.Models;
 
-namespace SFBars
+namespace Bars
 {
 	public static class AuthConfig
 	{

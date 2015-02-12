@@ -15,19 +15,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using SFBars.App_Start;
+using Bars.App_Start;
 using WebActivatorEx;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using SFBars.DependencyResolution;
-using SFBars.Api.DependencyResolution;
+using Bars.DependencyResolution;
+using Bars.Api.DependencyResolution;
 using StructureMap;
 
 [assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
 
-namespace SFBars.App_Start {
+namespace Bars.App_Start
+{
 
     
 	public static class StructuremapMvc {

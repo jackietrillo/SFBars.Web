@@ -7,7 +7,7 @@
     <ProjectGuid>{F8E0111E-77F4-4B3F-BB29-DE7584BAA5E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SFBars.Core</RootNamespace>
+    <RootNamespace>Bars.Core</RootNamespace>
     <AssemblyName>SFBars.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,6 +47,10 @@
     <Compile Include="Domain\BarType.cs" />
     <Compile Include="Domain\BarTypeBar.cs" />
     <Compile Include="Domain\District.cs" />
+    <Compile Include="Domain\Event.cs" />
+    <Compile Include="Domain\MusicType.cs" />
+    <Compile Include="Domain\Party.cs" />
+    <Compile Include="Domain\TopList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

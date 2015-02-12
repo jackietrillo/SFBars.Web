@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SFBars.Services;
-using SFBars.Api.Models;
-using SFBars.Core.Domain;
-using SFBars.WebApi.Models;
-using AutoMapper;
-namespace SFBars.Api.Controllers
+using Bars.Services;
+using Bars.Api.Models;
+using Bars.Core.Domain;
+using Bars.WebApi.Models;
+
+namespace Bars.Api.Controllers
 {
-	public class BarTypeController : ApiController
+	public class BarTypeController : BaseController
 	{
 		private IBarTypeService _service;
 		private IBarService _barService;		
@@ -20,22 +20,22 @@ namespace SFBars.Api.Controllers
 		{
 			_service = service;
 			_barService = barService;
-
-			Mapper.CreateMap<BarType, BarTypeModel>();
-			
-			Mapper.CreateMap<Bar, BarModel>();
 		}
 
 		public List<BarTypeModel> Get()
 		{
-			IQueryable<BarType> barTypes = _service.GetAllBarTypes();
+			IList<BarType> barTypes = _service.GetAllBarTypes();
 
-			List<BarTypeModel> barTypeModels = Mapper.Map(barTypes, new List<BarTypeModel>());
-
-			foreach (BarTypeModel barTypeModel in barTypeModels)
+			List<BarTypeModel> barTypeModels = new List<BarTypeModel>();
+			BarTypeModel barTypeModel;
+			foreach (BarType barType in barTypes)
 			{
-				IQueryable<Bar> bars = _barService.GetBarsByBarType(barTypeModel.BarTypeId);
-				barTypeModel.Bars = Mapper.Map(bars, new List<BarModel>());
+				barTypeModel = new BarTypeModel { 
+					BarTypeId = barType.BarTypeId,
+					Name = barType.Name,				
+				};
+			
+				barTypeModels.Add(barTypeModel);
 			}
 
 			return barTypeModels;			
@@ -43,9 +43,13 @@ namespace SFBars.Api.Controllers
 
 		public List<BarModel> Get(int id)
 		{
-			IQueryable<Bar> bars = _barService.GetBarsByBarType(id);			
-
-			return Mapper.Map(bars, new List<BarModel>());
+			IList<Bar> bars = _barService.GetBarsByBarType(id);			
+			List<BarModel> barModels = new List<BarModel>();		
+			foreach(Bar bar in bars)
+			{
+				barModels.Add(this.MapBarToBarModel(bar));
+			}
+			return barModels;
 		}	
 	}
 }

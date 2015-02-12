@@ -7,13 +7,20 @@
 USE SFBars
 
 DELETE FROM BarTypeBar
+GO
 DELETE FROM TopList
+GO
 DELETE FROM Party
+GO
 DELETE FROM [Event]
+GO
 DELETE FROM Bar
+GO
 DELETE FROM BarType
+GO
 DELETE FROM District
-DELETE FROM Music
+GO
+DELETE FROM MusicType
 GO
 
 SET IDENTITY_INSERT SFBars.dbo.District ON
@@ -77,7 +84,7 @@ INSERT INTO BarType (BarTypeId, Name) VALUES (@WINEBAR, 'Wine Bar')
 SET IDENTITY_INSERT SFBars.dbo.BarType OFF
 
 
-SET IDENTITY_INSERT SFBars.dbo.Music ON
+SET IDENTITY_INSERT SFBars.dbo.MusicType ON
 
 DECLARE @COUNTRY INT = 1
 DECLARE @DANCE INT = 2
@@ -89,17 +96,17 @@ DECLARE @PUNK INT = 7
 DECLARE @REGGAE INT = 8
 DECLARE @ROCK INT = 9
 
-INSERT INTO Music (MusicId, Name) VALUES (@COUNTRY, 'Country')
-INSERT INTO Music (MusicId, Name) VALUES (@DANCE, 'Dance')
-INSERT INTO Music (MusicId, Name) VALUES (@HIPHOP, 'Hip Hop')
-INSERT INTO Music (MusicId, Name) VALUES (@JAZZ, 'Jazz')
-INSERT INTO Music (MusicId, Name) VALUES (@LATINO, 'Latino')
-INSERT INTO Music (MusicId, Name) VALUES (@METAL, 'Metal')
-INSERT INTO Music (MusicId, Name) VALUES (@PUNK, 'Punk')
-INSERT INTO Music (MusicId, Name) VALUES (@REGGAE, 'Reggae')
-INSERT INTO Music (MusicId, Name) VALUES (@ROCK, 'Rock')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@COUNTRY, 'Country')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@DANCE, 'Dance')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@HIPHOP, 'Hip Hop')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@JAZZ, 'Jazz')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@LATINO, 'Latino')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@METAL, 'Metal')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@PUNK, 'Punk')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@REGGAE, 'Reggae')
+INSERT INTO MusicType (MusicTypeId, Name) VALUES (@ROCK, 'Rock')
 
-SET IDENTITY_INSERT SFBars.dbo.Music OFF
+SET IDENTITY_INSERT SFBars.dbo.MusicType OFF
 
 --TODO Insert more bars (Mikey's, Stud, Makeout Room, Oasis, Slate, Beauty Bar, The Fillmore, Raven Bar, Monarch, Audio Night Club) 
 
@@ -252,7 +259,6 @@ INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, C
 INSERT INTO Bar (DistrictId, Name, Descrip, Address, Phone, Hours, WebsiteUrl, CalendarUrl, FacebookUrl, YelpUrl, Latitude, Longitude, ImageUrl) 
 	VALUES (@DISTRICTRICHMOND, 'Boom Boom Room', 'Revelers pack this veteran club''s dance floor for live funk, jazz & blues sets by top musicians.', '1601 Fillmore Street', '(415) 673-8000', '4 PM - 12 AM', 'http://www.boomboomblues.com/', '', 'https://www.facebook.com/BoomBoomRoomSF', 'http://www.yelp.com/biz/boom-boom-room-san-francisco', 37.784648, -122.433170, 'TableCell-BoomBoomRoom.png')
 
-
 INSERT INTO TopList ([Rank], BarId) 
 	SELECT 1, (SELECT BarId FROM Bar WHERE Name Like 'Badlands')
 INSERT INTO TopList ([Rank], BarId) 
@@ -275,7 +281,6 @@ INSERT INTO TopList ([Rank], BarId)
 	SELECT 10, (SELECT BarId FROM Bar WHERE Name Like 'Boom Boom Room')
 INSERT INTO TopList ([Rank], BarId) 
 	SELECT 11, (SELECT BarId FROM Bar WHERE Name Like 'El Rio')
-
 
 -- Dance Clubs
 INSERT INTO BarTypeBar( BarTypeId, BarId)
@@ -385,7 +390,7 @@ SELECT @WINEBAR, BarId FROM Bar WHERE Name IN (
 
 
 UPDATE Bar
-SET MusicId = @DANCE
+SET MusicTypeId = @DANCE
 WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
  'Beaux',
  'Blondie''s',
@@ -395,20 +400,20 @@ WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
 )
  
 UPDATE Bar
-SET MusicId = @ROCK
+SET MusicTypeId = @ROCK
 WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
  'Amensia',
  'DNA Lounge')
 )
 
 UPDATE Bar
-SET MusicId = @PUNK
+SET MusicTypeId = @PUNK
 WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
  'El Rio')
 )
 
 UPDATE Bar
-SET MusicId = @JAZZ
+SET MusicTypeId = @JAZZ
 WHERE BarId IN (SELECT BarId FROM Bar WHERE Name IN (
  'The Royal Cuckoo')
 )
