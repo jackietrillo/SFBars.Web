@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Bars.Api.Models
 {
@@ -13,7 +11,6 @@ namespace Bars.Api.Models
 		}
 
 		public int DistrictId { get; set; }
-
 		public string Name { get; set; }
 
 		public List<BarModel> Bars { get; set; }

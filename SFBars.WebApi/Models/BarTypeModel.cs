@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Bars.Api.Models;
 
-namespace Bars.WebApi.Models
+namespace Bars.Api.Models
 {
 	public class BarTypeModel
 	{
@@ -18,6 +15,4 @@ namespace Bars.WebApi.Models
 
 		public List<BarModel> Bars { get; set; }
 	}
-
-	
 }

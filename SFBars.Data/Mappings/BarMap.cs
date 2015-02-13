@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 using Bars.Core.Domain;
 
-namespace Bars.Data.Mapping
+namespace Bars.Data.Mappings
 {
 	public partial class BarMap : EntityTypeConfiguration<Bar>
 	{
@@ -16,6 +16,8 @@ namespace Bars.Data.Mapping
 			this.HasRequired(b => b.District)
 								 .WithMany(s => s.Bars)
 								 .HasForeignKey(b => b.DistrictId);
+
+			
 		}
 	}
 }

@@ -10,6 +10,11 @@ INNER JOIN District d ON b.DistrictId = d.DistrictId
 -- Bars that are not mapped to a bar type
 SELECT * FROM Bar WHERE BarId NOT IN (SELECT BarId FROM BarTypeBar)
 
-SELECT * FROM Music
+-- Bars that do not have a music type
+SELECT * FROM Bar WHERE MusicTypeId IS NULL OR MusicTypeId NOT IN (SELECT MusicTypeId FROM MusicType)
+
 
 SELECT * FROM TopList
+SELECT * FROM MusicType
+SELECT * FROM [Event]
+SELECT * FROM [Party]

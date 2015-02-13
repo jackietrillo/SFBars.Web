@@ -27,6 +27,21 @@ BEGIN
 	ALTER TABLE BarTypeBar DROP CONSTRAINT FK_BarTypeBar_BarType
 END 
 
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_BarTypeBar_StatusFlag]') AND parent_object_id = OBJECT_ID(N'[dbo].[BarTypeBar]'))
+BEGIN
+	ALTER TABLE [dbo].[BarTypeBar]  DROP CONSTRAINT [DF_BarTypeBar_StatusFlag] 
+END
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_BarTypeBar_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[BarTypeBar]'))
+BEGIN
+	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_BarTypeBar_CreateDate] 
+END
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_BarTypeBar_LastUserId]') AND parent_object_id = OBJECT_ID(N'[dbo].[BarTypeBar]'))
+BEGIN
+	ALTER TABLE [dbo].[BarTypeBar]  DROP CONSTRAINT [DF_BarTypeBar_LastUserId] 
+END
+
 -- Drop BarTypeBar
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[BarTypeBar]') AND type in (N'U'))
 BEGIN
@@ -37,6 +52,21 @@ END
 IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_TopList_Bar]') AND parent_object_id = OBJECT_ID(N'[dbo].[TopList]'))
 BEGIN
 	ALTER TABLE TopList DROP CONSTRAINT FK_TopList_Bar
+END
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_TopList_StatusFlag]') AND parent_object_id = OBJECT_ID(N'[dbo].[TopList]'))
+BEGIN
+	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_TopList_StatusFlag] 
+END
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_TopList_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[TopList]'))
+BEGIN
+	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_TopList_CreateDate] 
+END
+
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_TopList_LastUserId]') AND parent_object_id = OBJECT_ID(N'[dbo].[TopList]'))
+BEGIN
+	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_TopList_LastUserId] 
 END
 
 -- Drop TopList
@@ -288,6 +318,10 @@ CREATE TABLE [dbo].[BarTypeBar](
 	[BarTypeBarId] [int] IDENTITY(1,1) NOT NULL,
 	[BarId] [int] NOT NULL,
 	[BarTypeId] [int] NOT NULL,
+	[LastUpdate] [datetime] NULL, 
+	[LastUserId] [int] NOT NULL CONSTRAINT DF_BarTypeBar_LastUserId DEFAULT 1000,
+	[CreateDate] [datetime] CONSTRAINT DF_BarTypeBar_CreateDate DEFAULT GetUtcDate(), 
+	[StatusFlag] [int]  CONSTRAINT DF_BarTypeBar_StatusFlag DEFAULT 1
  CONSTRAINT [PK_BarTypeBar] PRIMARY KEY CLUSTERED 
 (
 	[BarTypeBarId] ASC
@@ -303,7 +337,11 @@ ALTER TABLE [dbo].[BarTypeBar]  WITH CHECK ADD  CONSTRAINT [FK_BarTypeBar_BarTyp
 CREATE TABLE [dbo].[TopList](
 	[TopListId] [int] IDENTITY(1,1) NOT NULL,
 	[BarId] [int] NOT NULL,
-	[Rank] [tinyint] NOT NULL
+	[Rank] [tinyint] NOT NULL,
+	[LastUpdate] [datetime] NULL, 
+	[LastUserId] [int] NOT NULL CONSTRAINT DF_TopList_LastUserId DEFAULT 1000,
+	[CreateDate] [datetime] CONSTRAINT DF_TopList_CreateDate DEFAULT GetUtcDate(), 
+	[StatusFlag] [int]  CONSTRAINT DF_TopList_StatusFlag DEFAULT 1
  CONSTRAINT [PK_TopList] PRIMARY KEY CLUSTERED 
 (
 	[TopListId] ASC

@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServiceFacade.cs" />
     <Compile Include="Services\BarTypeService.cs" />
     <Compile Include="Services\DistrictService.cs" />
     <Compile Include="Services\EventService.cs" />

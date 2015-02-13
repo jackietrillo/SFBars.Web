@@ -5,12 +5,9 @@ using Bars.Core.Domain;
 
 namespace Bars.Services
 {
-	public class ServiceFacade : IServiceFacade
+	public class ServiceFacade 
 	{
-		public ServiceFacade() 
-		{ 
-			//
-		}
+		public ServiceFacade() { }
 
 		public List<Bar> GetAllBars()
 		{

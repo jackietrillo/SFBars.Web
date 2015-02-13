@@ -5,7 +5,7 @@ using System.Data.Entity;
 using Bars.Core.Domain;
 using System.Reflection;
 using System.Data.Entity.ModelConfiguration;
-using Bars.Data.Mapping;
+using Bars.Data.Mappings;
 
 namespace Bars.Data
 {
@@ -22,15 +22,13 @@ namespace Bars.Data
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{			 
-			//TODO: remove reflection - performance hit		
-			var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-					 .Where(type => !String.IsNullOrEmpty(type.Namespace))
-					 .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
-			foreach (var type in typesToRegister)
-			{
-				dynamic configurationInstance = Activator.CreateInstance(type);
-				modelBuilder.Configurations.Add(configurationInstance);
-			}
+			modelBuilder.Configurations.Add(new DistrictMap());
+			modelBuilder.Configurations.Add(new MusicTypeMap());
+			modelBuilder.Configurations.Add(new BarTypeMap());
+			modelBuilder.Configurations.Add(new BarMap());
+			modelBuilder.Configurations.Add(new EventMap());
+			modelBuilder.Configurations.Add(new PartyMap());
+			modelBuilder.Configurations.Add(new TopListMap());
 		}
 
 		/// <summary>

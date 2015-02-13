@@ -7,19 +7,34 @@ using System.Web.Http;
 using Bars.Services;
 using Bars.Api.Models;
 using Bars.Core.Domain;
-using Bars.WebApi.Models;
 
 namespace Bars.Api.Controllers
 {
 	public class TopListController : BaseController
 	{
-		private IServiceFacade _service;
+		public TopListController() { }
 
-		public TopListController(IServiceFacade barService)
+		public List<TopListModel> Get()
 		{
-			_service = barService;
-		}
+			List<TopList> topList = ServiceFacade.GetAllTopList();
 
+			List<TopListModel> topListModels = new List<TopListModel>();
+			TopListModel topListModel;
+
+			foreach (TopList topListItem in topList)
+			{
+				topListModel = new TopListModel
+				{
+					TopListId = topListItem.TopListId,
+					BarId = topListItem.BarId,
+					Rank = topListItem.Rank,
+				};
+
+				topListModels.Add(topListModel);
+			}
+
+			return topListModels;
+		}
 	}
 }
 

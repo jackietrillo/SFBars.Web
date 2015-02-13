@@ -7,38 +7,32 @@ using System.Web.Http;
 using Bars.Services;
 using Bars.Api.Models;
 using Bars.Core.Domain;
-using Bars.WebApi.Models;
 
 namespace Bars.Api.Controllers
 {
 	public class DistrictController : BaseController
 	{
-		private IServiceFacade _service;
+		public DistrictController() { }
 
-		public DistrictController(IServiceFacade barService)
+		public List<DistrictModel> Get()
 		{
-			_service = barService;		
-		}
+			List<District> districts = ServiceFacade.GetAllDistricts();
 
-		public List<EventModel> Get()
-		{
-			List<Event> events = _service.GetAllEvents();
+			List<DistrictModel> districtModels = new List<DistrictModel>();
+			DistrictModel districtModel;
 
-			List<EventModel> eventModels = new List<EventModel>();
-			EventModel eventModel;
-
-			foreach (Event @event in events)
+			foreach (District district in districts)
 			{
-				eventModel = new EventModel
+				districtModel = new DistrictModel
 				{
-					EventId = @event.EventId,
-					Name = @event.Name,
+					DistrictId = district.DistrictId,
+					Name = district.Name,
 				};
 
-				eventModels.Add(eventModel);
+				districtModels.Add(districtModel);
 			}
 
-			return eventModels;			
+			return districtModels;			
 		}
 	}
 }

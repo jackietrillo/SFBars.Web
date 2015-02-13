@@ -5,11 +5,6 @@ namespace Bars.Core.Domain
 {
 	public class Party : BaseEntity
 	{
-		public Party()
-		{
-			//
-		}
-
 		public int PartyId { get; set; }
 		public int? BarId { get; set; }
 		public string Name { get; set; }

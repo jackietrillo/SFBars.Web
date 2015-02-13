@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Bars.Api.Models
 {
 	public class TopListModel
 	{
+		public TopListModel() { }
+
+		public int TopListId { get; set; }
+		public string Name { get; set; }
+		public int Rank { get; set; }
+		public int BarId { get; set; }
 	}
 }

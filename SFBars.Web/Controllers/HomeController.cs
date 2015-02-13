@@ -7,15 +7,11 @@ using Bars.Services;
 
 namespace Bars.Controllers
 {
-	public class HomeController : Controller
-	{
-		private IServiceFacade _service;
-
-		public HomeController(IServiceFacade barService)
-		{
-			_service = barService;		
+	public class HomeController : BaseController
+	{		
+		public HomeController()
+		{			
 		}
-
 
 		public ActionResult Index()
 		{

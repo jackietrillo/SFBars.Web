@@ -13,33 +13,31 @@ using Bars.Services;
 
 namespace Bars
 {
-	// Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-	// visit http://go.microsoft.com/?LinkId=9394801
-
-	public class MvcApplication : System.Web.HttpApplication
+	public class Global : System.Web.HttpApplication
 	{
-		internal ServiceFacade ServiceFacade { get; private set; }
+		public ServiceFacade ServiceFacade { get; private set; }
 
 		protected void Application_Start()
-		{				
+		{
+			ServiceFacade = new ServiceFacade();
+
 			AreaRegistration.RegisterAllAreas();
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-			AuthConfig.RegisterAuth();
-					
+			AuthConfig.RegisterAuth();					
 		}
 
 		public override void Init()
 		{
-			base.Init();
-			ServiceFacade = new ServiceFacade();
+			base.Init();		
 		}
 
 		protected void Application_End(object sender, EventArgs e)
 		{
-
+			//
 		}
+
 	}
 }

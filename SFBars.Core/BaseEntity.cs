@@ -8,8 +8,6 @@ namespace Bars.Core.Domain
 {
     public class BaseEntity
     {
-		public BaseEntity() { }
-
 		public int LastUserId { get; set; }
 		public DateTime? LastUpdate { get; set; }
 		public DateTime? CreateDate { get; set; }

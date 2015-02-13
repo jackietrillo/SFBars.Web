@@ -7,38 +7,32 @@ using System.Web.Http;
 using Bars.Services;
 using Bars.Api.Models;
 using Bars.Core.Domain;
-using Bars.WebApi.Models;
 
 namespace Bars.Api.Controllers
 {
 	public class EventController : BaseController
 	{
-		private IServiceFacade _service;
-
-		public EventController(IServiceFacade barService)
-		{
-			_service = barService;		
-		}
+		public EventController() { }
 
 		public List<EventModel> Get()
 		{
-			IList<Event> Events = _service.GetAllEvents();
+			IList<Event> events = ServiceFacade.GetAllEvents();
 
-			List<EventModel> EventModels = new List<EventModel>();
-			EventModel EventModel;
+			List<EventModel> eventModels = new List<EventModel>();
+			EventModel eventModel;
 
-			foreach (Event Event in Events)
+			foreach (Event Event in events)
 			{
-				EventModel = new EventModel
+				eventModel = new EventModel
 				{
 					EventId = Event.EventId,
 					Name = Event.Name,
 				};
 
-				EventModels.Add(EventModel);
+				eventModels.Add(eventModel);
 			}
 
-			return EventModels;			
+			return eventModels;			
 		}
 	}
 }

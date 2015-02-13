@@ -3,7 +3,6 @@ using Bars.Core.Domain;
 
 namespace Bars.Data.Mappings
 {
-
 	public partial class BarTypeBarMap : EntityTypeConfiguration<BarTypeBar>
 	{
 		public BarTypeBarMap()
@@ -14,10 +13,9 @@ namespace Bars.Data.Mappings
 								 .WithMany(s => s.BarTypes)
 								 .HasForeignKey(b => b.BarId);
 
-
 			this.HasRequired(b => b.BarType)
 								 .WithMany(s => s.Bars)
-								 .HasForeignKey(b => b.BarId);
+								 .HasForeignKey(b => b.BarTypeId);
 		}
 	}
 }

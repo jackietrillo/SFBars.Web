@@ -98,7 +98,7 @@ namespace Bars.Data
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 
                 var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
+             
                 throw fail;
             }
         }
@@ -127,7 +127,7 @@ namespace Bars.Data
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
 
                 var fail = new Exception(msg, dbEx);
-                //Debug.WriteLine(fail.Message, fail);
+         
                 throw fail;
             }
         }

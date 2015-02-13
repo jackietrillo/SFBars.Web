@@ -12,6 +12,13 @@ namespace Bars.Api.Controllers
 {
     public class BaseController : ApiController
     {
+		private static ServiceFacade _serviceFacade;
+		public static ServiceFacade ServiceFacade 
+		{ 			
+			set { _serviceFacade =  value; }
+			get { return _serviceFacade; } 			
+		}
+
 		protected BarModel MapBarToBarModel(Bar bar)
 		{
 			return new BarModel

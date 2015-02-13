@@ -66,6 +66,7 @@
     <Compile Include="Mappings\MusicTypeMap.cs" />
     <Compile Include="Mappings\PartyMap.cs" />
     <Compile Include="Managers\MusicTypeDataManager.cs" />
+    <Compile Include="Mappings\TopListMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\BarsDbContext.cs" />
     <Compile Include="Data\Repository.cs">

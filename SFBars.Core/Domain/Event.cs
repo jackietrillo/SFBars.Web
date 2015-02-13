@@ -5,11 +5,6 @@ namespace Bars.Core.Domain
 {
 	public class @Event : BaseEntity
 	{
-		public @Event()
-		{
-			//
-		}
-
 		public int EventId { get; set; }
 		public int? BarId { get; set; }
 		public string Name { get; set; }

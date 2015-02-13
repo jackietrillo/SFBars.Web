@@ -7,20 +7,35 @@ using System.Web.Http;
 using Bars.Services;
 using Bars.Api.Models;
 using Bars.Core.Domain;
-using Bars.WebApi.Models;
 
 namespace Bars.Api.Controllers
 {
 	public class PartyController : BaseController
 	{
-		private IServiceFacade _service;
+		public PartyController() { }
 
-		public PartyController(IServiceFacade barService)
+		public List<PartyModel> Get()
 		{
-			_service = barService;
-		}
+			List<Party> parties = ServiceFacade.GetAllParties();
 
-	
+			List<PartyModel> partyModels = new List<PartyModel>();
+			PartyModel partyModel;
+
+			foreach (Party party in parties)
+			{
+				partyModel = new PartyModel
+				{
+					PartyId = party.PartyId,
+					Name = party.Name,
+					Address = party.Address,
+					BarId = party.BarId					
+				};
+
+				partyModels.Add(partyModel);
+			}
+
+			return partyModels;
+		}
 	}
 }
 

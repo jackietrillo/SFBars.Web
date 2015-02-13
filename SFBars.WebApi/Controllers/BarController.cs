@@ -12,16 +12,11 @@ namespace Bars.Api.Controllers
 {
 	public class BarController : BaseController
 	{
-		private IServiceFacade _service;
-
-		public BarController(IServiceFacade barService)
-		{
-			_service = barService;		
-		}
+		public BarController() { }
 
 		public List<BarModel> Get()
 		{
-			IList<Bar> bars = _service.GetAllBars();
+			IList<Bar> bars = ServiceFacade.GetAllBars();
 			List<BarModel> barModels = new List<BarModel>();
 
 			foreach (Bar bar in bars)
