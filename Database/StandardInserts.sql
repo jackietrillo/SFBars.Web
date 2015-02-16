@@ -23,8 +23,6 @@ GO
 DELETE FROM MusicType
 GO
 
-SET IDENTITY_INSERT SFBars.dbo.District ON
-
 DECLARE @DISTRICTBERNALHEIGHTS INT = 1
 DECLARE @DISTRICTCASTRO INT = 2
 DECLARE @DISTRICTFINANCIAL INT = 3
@@ -52,10 +50,6 @@ INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTRICHMOND, 'Richmond')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTSOMA, 'SoMa')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTTENDERLOIN, 'Tenderloin')
 
-SET IDENTITY_INSERT SFBars.dbo.District OFF
-
-SET IDENTITY_INSERT SFBars.dbo.BarType ON
-
 DECLARE @DANCECLUB INT = 1
 DECLARE @DIVEBAR INT = 2
 DECLARE @GAYBAR INT = 3
@@ -80,9 +74,6 @@ INSERT INTO BarType (BarTypeId, Name) VALUES (@PUB, 'Pub')
 INSERT INTO BarType (BarTypeId, Name) VALUES (@SPORTSBAR, 'Sport''s Bar')
 INSERT INTO BarType (BarTypeId, Name) VALUES (@WINEBAR, 'Wine Bar')
 
-SET IDENTITY_INSERT SFBars.dbo.BarType OFF
-
-SET IDENTITY_INSERT SFBars.dbo.MusicType ON
 
 DECLARE @COUNTRY INT = 1
 DECLARE @DANCE INT = 2
@@ -104,7 +95,6 @@ INSERT INTO MusicType (MusicTypeId, Name) VALUES (@PUNK, 'Punk')
 INSERT INTO MusicType (MusicTypeId, Name) VALUES (@REGGAE, 'Reggae')
 INSERT INTO MusicType (MusicTypeId, Name) VALUES (@ROCK, 'Rock')
 
-SET IDENTITY_INSERT SFBars.dbo.MusicType OFF
 
 --TODO Insert more bars (Mikey's, Stud, Makeout Room, Oasis, Slate, Beauty Bar, The Fillmore, Raven Bar, Monarch, Audio Night Club) 
 
