@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="DataFacade.cs" />
     <Compile Include="Managers\BarDataManager.cs" />
+    <Compile Include="Managers\BarTypeBarDataManager.cs" />
     <Compile Include="Managers\BarTypeDataManager.cs" />
     <Compile Include="Managers\DistrictDataManager.cs" />
     <Compile Include="Managers\EventDataManager.cs" />

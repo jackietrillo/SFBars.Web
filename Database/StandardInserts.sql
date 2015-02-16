@@ -52,7 +52,6 @@ INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTRICHMOND, 'Richmond')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTSOMA, 'SoMa')
 INSERT INTO District (DistrictId, Name) VALUES ( @DISTRICTTENDERLOIN, 'Tenderloin')
 
-
 SET IDENTITY_INSERT SFBars.dbo.District OFF
 
 SET IDENTITY_INSERT SFBars.dbo.BarType ON
@@ -82,7 +81,6 @@ INSERT INTO BarType (BarTypeId, Name) VALUES (@SPORTSBAR, 'Sport''s Bar')
 INSERT INTO BarType (BarTypeId, Name) VALUES (@WINEBAR, 'Wine Bar')
 
 SET IDENTITY_INSERT SFBars.dbo.BarType OFF
-
 
 SET IDENTITY_INSERT SFBars.dbo.MusicType ON
 

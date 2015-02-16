@@ -7,8 +7,8 @@ namespace Bars.Data
 {
 	internal sealed class PartyDataManager : Repository<Party>
 	{
-		public PartyDataManager()
-			: base()
+		public PartyDataManager(BarsDbContext context)
+			: base(context)
 		{
 			//
 		}

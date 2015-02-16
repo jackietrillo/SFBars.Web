@@ -19,5 +19,6 @@ namespace Bars.Api.Models
 		public string FacebookUrl { get; set; }
 		public string YelpUrl { get; set; }
 		public string ImageUrl { get; set; }
+		public string BarTypes { get; set; }
 	}
 }

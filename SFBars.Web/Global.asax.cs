@@ -19,7 +19,7 @@ namespace Bars
 
 		protected void Application_Start()
 		{
-			ServiceFacade = new ServiceFacade();
+			this.ServiceFacade = new ServiceFacade();
 
 			AreaRegistration.RegisterAllAreas();
 			WebApiConfig.Register(GlobalConfiguration.Configuration);

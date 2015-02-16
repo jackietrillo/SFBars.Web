@@ -7,8 +7,8 @@ namespace Bars.Data
 {
 	internal sealed class MusicTypeDataManager : Repository<MusicType>
 	{
-		public MusicTypeDataManager()
-			: base()
+		public MusicTypeDataManager(BarsDbContext context)
+			: base(context)
 		{	
 			//
 		}

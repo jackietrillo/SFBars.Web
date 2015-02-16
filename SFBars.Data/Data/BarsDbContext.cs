@@ -25,6 +25,7 @@ namespace Bars.Data
 			modelBuilder.Configurations.Add(new DistrictMap());
 			modelBuilder.Configurations.Add(new MusicTypeMap());
 			modelBuilder.Configurations.Add(new BarTypeMap());
+			modelBuilder.Configurations.Add(new BarTypeBarMap());
 			modelBuilder.Configurations.Add(new BarMap());
 			modelBuilder.Configurations.Add(new EventMap());
 			modelBuilder.Configurations.Add(new PartyMap());

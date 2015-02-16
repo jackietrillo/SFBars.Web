@@ -7,7 +7,8 @@ namespace Bars.Data
 {
 	internal sealed class BarTypeDataManager : Repository<BarType>
 	{
-		public BarTypeDataManager() : base()
+		public BarTypeDataManager(BarsDbContext context)
+			: base(context)
 		{	
 			//
 		}

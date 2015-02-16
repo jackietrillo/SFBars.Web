@@ -7,8 +7,8 @@ namespace Bars.Data
 {
 	internal sealed class TopListDataManager : Repository<TopList>
 	{
-		public TopListDataManager()
-			: base()
+		public TopListDataManager(BarsDbContext context)
+			: base(context)
 		{
 			//
 		}

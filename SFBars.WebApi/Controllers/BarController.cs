@@ -16,12 +16,15 @@ namespace Bars.Api.Controllers
 
 		public List<BarModel> Get()
 		{
-			IList<Bar> bars = ServiceFacade.GetAllBars();
+			List<Bar> bars = ServiceFacade.GetAllBars();			
+
 			List<BarModel> barModels = new List<BarModel>();
 
 			foreach (Bar bar in bars)
 			{
 				var barModel = this.MapBarToBarModel(bar);
+
+				barModel.BarTypes =  String.Join(",", bar.BarTypes.Select(t => t.BarTypeId.ToString()).ToList().ToArray());
 				barModels.Add(barModel);		
 			}
 
