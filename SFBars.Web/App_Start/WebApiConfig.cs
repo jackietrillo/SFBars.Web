@@ -24,7 +24,7 @@ namespace Bars
 			config.Routes.MapHttpRoute(
 				name: "DefaultApi",
 				routeTemplate: "api/bars/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
+				defaults: new { controller = "Bar",  id = RouteParameter.Optional }
 			);
 
 			Bars.Controllers.BaseController.ServiceFacade = ((Global)System.Web.HttpContext.Current.ApplicationInstance).ServiceFacade;

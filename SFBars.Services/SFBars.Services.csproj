@@ -43,6 +43,7 @@
     <Compile Include="Services\BarTypeService.cs" />
     <Compile Include="Services\DistrictService.cs" />
     <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\MusicTypeService.cs" />
     <Compile Include="Services\PartyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BarService.cs" />

@@ -8,11 +8,8 @@ namespace Bars.Data
 	internal sealed class BarTypeDataManager : Repository<BarType>
 	{
 		public BarTypeDataManager(BarsDbContext context)
-			: base(context)
-		{	
-			//
-		}
-
+			: base(context) {}
+	
 		public List<BarType> GetAllBarTypes()
 		{
 			return this.Table.AsQueryable().OrderBy(b => b.Name).ToList();

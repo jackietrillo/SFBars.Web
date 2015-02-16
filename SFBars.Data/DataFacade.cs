@@ -73,9 +73,12 @@ namespace Bars.Data
 			var barTable = BarDataManager.GetBarTable();
 			var barTypeBarTable = BarTypeBarDataManager.GetBarTypeBarTable();
 			
-			var result = barTable.Join (barTypeBarTable, b => b.BarId, btb => btb.BarId, (b, btb) =>new { b.BarId, b.DistrictId, b.MusicTypeId, b.Name, b.Descrip, b.Address, b.Phone, 
-				b.Hours, b.Latitude, b.Longitude, b.WebsiteUrl, b.CalendarUrl, b.FacebookUrl, b.YelpUrl, b.ImageUrl,btb.BarTypeId }).ToList();
-				
+			var result = (from b in barTable
+						  from btb in barTypeBarTable 
+						  .Where( btb => b.BarId == btb.BarId).DefaultIfEmpty()								 
+						  select new { b.BarId, b.DistrictId, b.MusicTypeId, b.Name, b.Descrip, b.Address, b.Phone, b.Hours, b.Latitude, b.Longitude, 
+									  b.WebsiteUrl, b.CalendarUrl, b.FacebookUrl, b.YelpUrl, b.ImageUrl, BarTypeId = btb.BarTypeId == null ? 0 :  btb.BarTypeId}).ToList();
+
 			var bars = new	List<Bar>();
 
 			foreach (var record in result)
@@ -101,7 +104,7 @@ namespace Bars.Data
 						ImageUrl = record.ImageUrl,				
 					};
 
-					var barTypes = result.Where(r => r.BarId == record.BarId);
+					var barTypes = result.Where(r => r.BarId == record.BarId && record.BarTypeId != 0 );
 					foreach (var barType in barTypes)
 					{
 						bar.BarTypes.Add(new BarTypeBar { BarId = barType.BarId, BarTypeId = barType.BarTypeId });
@@ -113,17 +116,15 @@ namespace Bars.Data
 			return bars;
 		}
 
-
-		public List<Bar> GetAllBarsXXX()
-		{
-			return this.BarDataManager.GetAllBars();
-		}
-
 		public List<BarType> GetAllBarTypes()
 		{
 			return this.BarTypeDataManager.GetAllBarTypes();
 		}
 
+		public List<MusicType> GetAllMusicTypes()
+		{
+			return this.MusicTypeDataManager.GetAllMusicTypes();
+		}
 		public List<District> GetAllDistricts()
 		{
 			return this.DistrictDataManager.GetAllDistricts();

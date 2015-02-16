@@ -6,16 +6,18 @@ using Bars.Data;
 
 namespace Bars.Services
 {
-	internal sealed class PartyService
+	internal sealed class MusicTypeService 
 	{
 		private DataFacade _dataFacade;
 		private DataFacade DataFacade { get { return _dataFacade ?? (_dataFacade = new DataFacade()); } }
 
-		public PartyService() {}
-
-		public List<Party> GetAllParties()
+		public MusicTypeService()
 		{
-			return DataFacade.GetAllParties();
+		}
+
+		public List<MusicType> GetAllMusicTypes()
+		{
+			return DataFacade.GetAllMusicTypes();
 		}
 	}
 }

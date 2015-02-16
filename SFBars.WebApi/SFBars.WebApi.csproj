@@ -81,12 +81,14 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DistrictController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\MusicTypeController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\TopListController.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarTypeModel.cs" />
     <Compile Include="Models\DistrictModel.cs" />
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\MusicTypeModel.cs" />
     <Compile Include="Models\PartyModel.cs" />
     <Compile Include="Models\TopListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

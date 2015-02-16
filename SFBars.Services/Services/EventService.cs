@@ -11,10 +11,7 @@ namespace Bars.Services
 		private DataFacade _dataFacade;
 		private DataFacade DataFacade { get { return _dataFacade ?? (_dataFacade = new DataFacade()); } }
 
-		public EventService()
-		{
-			//	
-		}
+		public EventService() {}
 
 		public List<Event> GetAllEvents()
 		{

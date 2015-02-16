@@ -8,10 +8,7 @@ namespace Bars.Data
 	internal sealed class DistrictDataManager : Repository<District>
 	{
 		public DistrictDataManager(BarsDbContext context)
-			: base(context)
-		{
-			//
-		}
+			: base(context) {}
 
 		public List<District> GetAllDistricts()
 		{

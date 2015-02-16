@@ -7,10 +7,7 @@ namespace Bars.Data
 {
 	internal sealed class EventDataManager : Repository<Event>
 	{
-		public EventDataManager(BarsDbContext context) : base(context)
-		{	
-			//
-		}
+		public EventDataManager(BarsDbContext context) : base(context) {}
 
 		public List<Event> GetAllEvents()
 		{

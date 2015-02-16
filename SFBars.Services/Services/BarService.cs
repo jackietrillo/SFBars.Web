@@ -13,11 +13,6 @@ namespace Bars.Services
 		private DataFacade _dataFacade;
 		private DataFacade DataFacade { get { return _dataFacade ?? (_dataFacade = new DataFacade()); } }
 	
-		public BarService()
-		{
-			//
-		}
-	
 		public Bar GetBarById(int barId)
 		{
 			return DataFacade.GetBarById(barId);			

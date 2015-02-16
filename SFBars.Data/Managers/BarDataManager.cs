@@ -8,10 +8,7 @@ namespace Bars.Data
 	internal sealed class BarDataManager : Repository<Bar>
 	{
 		public BarDataManager(BarsDbContext context)
-			: base(context)
-		{	
-			//
-		}
+			: base(context) {}
 	
 		public Bar GetBarById(int barId)
 		{
