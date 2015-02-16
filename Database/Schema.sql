@@ -32,9 +32,9 @@ BEGIN
 	ALTER TABLE [dbo].[BarTypeBar]  DROP CONSTRAINT [DF_BarTypeBar_StatusFlag] 
 END
 
-IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_BarTypeBar_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[BarTypeBar]'))
+IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_TopList_CreateDate]') AND parent_object_id = OBJECT_ID(N'[dbo].[TopList]'))
 BEGIN
-	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_BarTypeBar_CreateDate] 
+	ALTER TABLE [dbo].[TopList]  DROP CONSTRAINT [DF_TopList_CreateDate] 
 END
 
 IF EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_BarTypeBar_LastUserId]') AND parent_object_id = OBJECT_ID(N'[dbo].[BarTypeBar]'))
@@ -229,7 +229,7 @@ END
 
 -- Create District Table
 CREATE TABLE [dbo].[District](
-	[DistrictId] [int] IDENTITY(1,1) NOT NULL,
+	[DistrictId] [int] NOT NULL,
 	[Name] [nvarchar](100) NULL,	
 	[LastUpdate] [datetime] NULL,
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_District_LastUserId DEFAULT 1000, 
@@ -246,7 +246,7 @@ ALTER TABLE [dbo].[District]  WITH CHECK ADD  CONSTRAINT [FK_District_User] FORE
 
 -- Create BarType Table
 CREATE TABLE [dbo].[BarType](
-	[BarTypeId] [int] IDENTITY(1,1) NOT NULL,
+	[BarTypeId] [int] NOT NULL,
 	[Name] [nvarchar](100) NULL,	
 	[LastUpdate] [datetime] NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_BarType_LastUserId DEFAULT 1000,
@@ -264,7 +264,7 @@ ALTER TABLE [dbo].[BarType]  WITH CHECK ADD  CONSTRAINT [FK_BarType_User] FOREIG
 
 -- Create MusicType Table
 CREATE TABLE [dbo].[MusicType](
-	[MusicTypeId] [int] IDENTITY(1,1) NOT NULL,
+	[MusicTypeId] [int] NOT NULL,
 	[Name] [nvarchar](100) NOT NULL,
 	[LastUpdate] [datetime] NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_MusicType_LastUserId DEFAULT 1000,
@@ -282,7 +282,7 @@ ALTER TABLE [dbo].[MusicType]  WITH CHECK ADD  CONSTRAINT [FK_MusicType_User] FO
 
 -- Create Bar Table
 CREATE TABLE [dbo].[Bar](
-	[BarId] [int] IDENTITY(1,1) NOT NULL,	
+	[BarId] [int] IDENTITY(1010,10) NOT NULL,	
 	[DistrictId] [int] NOT NULL,
 	[MusicTypeId] [int] NULL,
 	[Name] [nvarchar](50) NOT NULL,
@@ -372,13 +372,13 @@ CREATE TABLE [dbo].[Party](
 ALTER TABLE [dbo].[Party]  WITH CHECK ADD  CONSTRAINT [FK_Party_Bar] FOREIGN KEY([BarId]) REFERENCES [dbo].[Bar] ([BarId])
 ALTER TABLE [dbo].[Party]  WITH CHECK ADD  CONSTRAINT [FK_Party_User] FOREIGN KEY([LastUserId]) REFERENCES [dbo].[UserProfile] ([UserId])
 
-
 -- Create Event Table
 CREATE TABLE [dbo].[Event](
-	[EventId] [int] NOT NULL,
+	[EventId] [int] IDENTITY(1,1) NOT NULL,
 	[BarId] [int] NULL,
 	[Name] [nvarchar](100) NOT NULL,
 	[Address] [nvarchar](150) NULL,
+	[EventDate] [datetime] NOT NULL,
 	[LastUpdate] DATETIME NULL, 
 	[LastUserId] [int] NOT NULL CONSTRAINT DF_Event_LastUserId DEFAULT 1000,
 	[CreateDate] DATETIME CONSTRAINT DF_Event_CreateDate DEFAULT GetUtcDate(), 	
